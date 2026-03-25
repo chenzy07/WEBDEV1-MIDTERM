@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pickup | Velvet Crust</title>
+    <link rel="stylesheet" href="pickup.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo">Velvet Crust</div>
+    <div class="nav-links">
+        <a href="index.html" class="btn-cream">Home</a>
+        <a href="shop.html" class="btn-cream">Shop</a>
+        <a href="design.html" class="btn-cream">Custom Cake</a>
+        <a href="summary.html" class="btn-cream">Cart (<span id="cart-count">0</span>)</a>
+        <a href="login.html" class="btn-cream login-btn">Login</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 style="text-align:center; margin-bottom:30px;">🛍️ Schedule Your Pickup</h2>
+
+    <div class="grid">
+        <!-- Pickup Date -->
+        <div class="cake-card">
+            <h3>Pickup Date</h3>
+            <input type="date" id="pickup-date">
+        </div>
+
+        <!-- Pickup Time -->
+        <div class="cake-card">
+            <h3>Pickup Time</h3>
+            <input type="time" id="pickup-time">
+        </div>
+
+        <!-- Pickup Location -->
+        <div class="cake-card" style="grid-column: span 2;">
+            <h3>Pickup Location</h3>
+            <select id="pickup-location">
+                <option value="">Select a branch</option>
+                <option>Main Branch - Downtown</option>
+                <option>Uptown Branch</option>
+                <option>Suburb Branch</option>
+            </select>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="cake-card" style="grid-column: span 2;">
+            <h3>Your Cart</h3>
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr style="border-bottom:1px solid #ccc;">
+                        <th style="padding:10px;">Item</th>
+                        <th style="padding:10px;">Qty</th>
+                        <th style="padding:10px;">Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items"></tbody>
+                <tfoot>
+                    <tr style="border-top:1px solid #ccc; font-weight:bold;">
+                        <td colspan="2" style="text-align:right; padding:10px;">Total:</td>
+                        <td colspan="2" id="total-price">$0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <!-- Confirm Pickup Button -->
+    <div class="cake-card" style="text-align:center; margin-top:20px;">
+        <button class="btn-cream" onclick="confirmPickup()">Confirm Pickup</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    // Ensure cart loads and pickup button works
+    document.addEventListener('DOMContentLoaded', () => {
+        cart = loadCartFromStorage();
+        updateCart();
+        updateCartCountDisplay();
+    });
+
+    function confirmPickup() {
+        const date = document.getElementById("pickup-date")?.value;
+        const time = document.getElementById("pickup-time")?.value;
+        const location = document.getElementById("pickup-location")?.value;
+
+        if (!date || !time || !location) {
+            showToast("Please fill all pickup details!");
+            return;
+        }
+
+        if (cart.length === 0) {
+            showToast("Your cart is empty!");
+            return;
+        }
+
+        showToast(`Pickup scheduled on ${date} at ${time} (${location})!`);
+        localStorage.removeItem("velvetCart");
+        cart = [];
+        updateCart();
+        updateCartCountDisplay();
+    }
+    // pickup.js
+const CART_KEY = "velvetCart";
+
+let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+
+// Show cart items in a summary table
+function renderPickupSummary() {
+    const table = document.getElementById('pickup-cart');
+    const totalEl = document.getElementById('pickup-total');
+    if (!table || !totalEl) return;
+
+    let total = 0;
+    table.innerHTML = '';
+    cart.forEach(item => {
+        table.innerHTML += `<tr>
+            <td>${item.name}</td>
+            <td>${item.qty}</td>
+            <td>$${item.price * item.qty}</td>
+        </tr>`;
+        total += item.price * item.qty;
+    });
+
+    totalEl.innerText = total;
+}
+
+window.onload = () => {
+    renderPickupSummary();
+};
+</script>
+
+</body>
+</html>
