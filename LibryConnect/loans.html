@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html"><div class="logo">📖 LibryConnect</div></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="loans.html" class="active">Loans</a></li>
+        <li><a href="overdue.html">Overdue <span id="overdueBadge" class="badge">0</span></a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>Loans</h2>
+
+    <!-- Add/Search Controls -->
+    <div style="margin-bottom: 15px;">
+        <button onclick="showLoanForm()" class="card-btn">+ Add Loan</button>
+        <input type="text" id="loanSearch" placeholder="Search loans..." onkeyup="searchLoans()">
+    </div>
+
+    <!-- Loan Form -->
+    <div id="loanForm" style="display:none;">
+        <input type="text" id="book" placeholder="Book Title">
+        <input type="text" id="borrower" placeholder="Borrower Name">
+        <input type="date" id="due">
+        <button onclick="addLoan()" class="card-btn">Save</button>
+    </div>
+
+    <!-- Loan List -->
+    <div id="loanList" class="book-grid"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

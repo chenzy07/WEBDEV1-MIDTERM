@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overdue Books</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html"><div class="logo">📖 LibryConnect</div></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="loans.html">Loans</a></li>
+        <li><a href="overdue.html" class="active">Overdue <span id="overdueBadge" class="badge">0</span></a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>⚠️ Overdue Books</h2>
+
+    <div class="card">
+        <p>Books listed here are past their due date.</p>
+        <p id="overdueCount">Total Overdue: 0</p>
+    </div>
+
+    <div id="overdueList"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

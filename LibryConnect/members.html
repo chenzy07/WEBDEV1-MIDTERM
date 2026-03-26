@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Members</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html"><div class="logo">📖 LibryConnect</div></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="members.html" class="active">Members</a></li>
+        <li><a href="loans.html">Loans</a></li>
+        <li><a href="overdue.html">Overdue <span id="overdueBadge" class="badge">0</span></a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>Library Members</h2>
+
+    <!-- Add/Search Controls -->
+    <div style="margin-bottom: 15px;">
+        <button onclick="showForm()" class="card-btn">+ Add Member</button>
+        <input type="text" id="memberSearch" placeholder="Search members..." onkeyup="searchMembers()">
+    </div>
+
+    <!-- Member Registration Form -->
+    <div id="memberForm" style="display:none;">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="id" placeholder="Member ID">
+        <input type="text" id="avatar" placeholder="Avatar URL (optional)">
+        <button onclick="addMember()" class="card-btn">Save</button>
+    </div>
+
+    <!-- Members List -->
+    <div id="memberList" class="book-grid"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
