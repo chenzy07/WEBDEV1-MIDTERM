@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Orders</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+
+<h2 class="logo">|||| STOCKMASTER ||||</h2>
+
+<a href="dashboard.html">Dashboard</a>
+<a href="stock.html">Stock</a>
+<a href="suppliers.html">Suppliers</a>
+<a href="orders.html">Orders</a>
+<a href="reports.html">Reports</a>
+<a href="login.html">Login</a>
+
+</div>
+
+<div class="content">
+
+<h1>Order Management</h1>
+
+<button class="action-btn">Create New Order</button>
+
+<br><br>
+
+<input 
+type="text" 
+id="searchOrders" 
+placeholder="Search orders..." 
+onkeyup="searchOrders()" 
+class="search-bar"
+>
+
+
+<h2>Order List</h2>
+
+<table>
+
+<tr>
+<th>Order ID</th>
+<th>Customer</th>
+<th>Product</th>
+<th>Quantity</th>
+<th>Total Price</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tr>
+<td>ORD-1001</td>
+<td>Juan Dela Cruz</td>
+<td>Barcode Scanner</td>
+<td>2</td>
+<td>$80</td>
+<td class="status-completed">Completed</td>
+<td>
+<button class="action-btn">View</button>
+<button class="action-btn">Cancel</button>
+</td>
+</tr>
+
+<tr>
+<td>ORD-1002</td>
+<td>Maria Santos</td>
+<td>Printer Paper</td>
+<td>10</td>
+<td>$50</td>
+<td class="status-processing">Processing</td>
+<td>
+<button class="action-btn">View</button>
+<button class="action-btn">Cancel</button>
+</td>
+</tr>
+
+<tr>
+<td>ORD-1003</td>
+<td>David Lim</td>
+<td>Thermal Printer</td>
+<td>1</td>
+<td>$120</td>
+<td class="status-pending">Pending</td>
+<td>
+<button class="action-btn">View</button>
+<button class="action-btn">Cancel</button>
+</td>
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>
