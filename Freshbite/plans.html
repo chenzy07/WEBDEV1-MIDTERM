@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meal Plans - FreshBite Prep</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="plans.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">FreshBite Prep</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="meal.html">Meals</a></li>
+        <li><a href="billing.html">Billing</a></li>
+        <li><a href="plans.html">Plan</a></li>
+        <li><button id="loginBtn">Login</button></li>
+    </ul>
+</nav>
+
+<div id="sideDrawer" class="side-drawer">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button class="login-submit">Sign In</button>
+</div>
+
+<section class="plans-hero">
+    <h1>Meal Plans</h1>
+    <p>Pick a plan that fits your lifestyle & stay healthy</p>
+</section>
+
+<section class="plans-gallery">
+
+    <div class="plan-card">
+        <h3>Starter</h3>
+        <p class="price">₱250/day</p>
+        <ul>
+            <li>1 meal/day</li>
+            <li>Free delivery for 3+ days</li>
+        </ul>
+        <button>Select Plan</button>
+    </div>
+
+    <div class="plan-card">
+        <h3>Standard</h3>
+        <p class="price">₱450/day</p>
+        <ul>
+            <li>2 meals/day</li>
+            <li>Includes weekly snack</li>
+        </ul>
+        <button>Select Plan</button>
+    </div>
+
+    <div class="plan-card">
+        <h3>Premium</h3>
+        <p class="price">₱650/day</p>
+        <ul>
+            <li>3 meals/day</li>
+            <li>Free delivery + nutrition guide</li>
+        </ul>
+        <button>Select Plan</button>
+    </div>
+
+    <div class="plan-card">
+        <h3>Family</h3>
+        <p class="price">₱1200/day</p>
+        <ul>
+            <li>4 meals/day for 2–4 people</li>
+            <li>Family-friendly portions</li>
+        </ul>
+        <button>Select Plan</button>
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Billing - FreshBite Prep</title>
+<link rel="stylesheet" href="billing.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">FreshBite Prep</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="meal.html">Meals</a></li>
+        <li><a href="billing.html">Billing</a></li>
+        <li><a href="plans.html">Plan</a></li>
+        <li><button id="loginBtn">Login</button></li>
+    </ul>
+</nav>
+
+<section class="billing-hero">
+    <h1>Your Order</h1>
+    <p>Select your meals and quantities</p>
+</section>
+
+<section class="billing-section">
+    <table id="billingTable">
+        <thead>
+            <tr>
+                <th>Meal</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Overnight Oats Bowl</td>
+                <td data-price="450">₱450</td>
+                <td><input type="number" min="0" value="0" class="qty"></td>
+                <td class="subtotal">₱0</td>
+            </tr>
+            <tr>
+                <td>Grilled Chicken & Rice</td>
+                <td data-price="520">₱520</td>
+                <td><input type="number" min="0" value="0" class="qty"></td>
+                <td class="subtotal">₱0</td>
+            </tr>
+            <tr>
+                <td>Fresh Veggie Salad Bowl</td>
+                <td data-price="390">₱390</td>
+                <td><input type="number" min="0" value="0" class="qty"></td>
+                <td class="subtotal">₱0</td>
+            </tr>
+            <tr>
+                <td>Healthy Chicken Wrap</td>
+                <td data-price="480">₱480</td>
+                <td><input type="number" min="0" value="0" class="qty"></td>
+                <td class="subtotal">₱0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="billing-total">
+        <h3>Total: <span id="totalAmount">₱0</span></h3>
+        <button id="checkoutBtn">Checkout</button>
+    </div>
+</section>
+
+<script src="billing.js"></script>
+</body>
+</html>

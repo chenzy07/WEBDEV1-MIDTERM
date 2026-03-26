@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food - FreshBite Prep</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">FreshBite Prep</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="meal.html">Meals</a></li>
+        <li><a href="billing.html">Billing</a></li>
+        <li><a href="plans.html">Plan</a></li>
+        <li><button id="loginBtn">Login</button></li>
+    </ul>
+</nav>
+
+<div id="sideDrawer" class="side-drawer">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button class="login-submit">Sign In</button>
+</div>
+
+<section class="food-hero">
+    <h1>Our Fresh & Healthy Meals</h1>
+    <p>Nutritious. Delicious. Affordable.</p>
+</section>
+
+<div id="nutrientPanel" class="nutrient-panel">
+    <button id="closeNutrient" class="close-btn">&times;</button>
+    <h2 id="nutrientTitle">Food Name</h2>
+    <p id="nutrientDetails">Calories, Protein, Carbs, Fats, Fiber, Vitamins, Minerals...</p>
+</div>
+
+<section class="food-gallery">
+
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061" alt="Overnight Oats">
+        <div class="food-info">
+            <h3>Overnight Oats Bowl</h3>
+            <p>450 kcal | High Fiber | Greek Yogurt & Berries</p>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d" alt="Grilled Chicken">
+        <div class="food-info">
+            <h3>Grilled Chicken & Rice</h3>
+            <p>520 kcal | High Protein | Balanced Macros</p>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Salad Bowl">
+        <div class="food-info">
+            <h3>Fresh Veggie Salad Bowl</h3>
+            <p>390 kcal | Low Carb | Vitamin Rich</p>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Healthy Wrap">
+        <div class="food-info">
+            <h3>Healthy Chicken Wrap</h3>
+            <p>480 kcal | Lean Protein | Whole Wheat</p>
+        </div>
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
