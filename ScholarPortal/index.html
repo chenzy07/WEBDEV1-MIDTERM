@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScholarPortal</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: #333;
+}
+
+/* ===== LOGIN & REGISTER FORMS ===== */
+#loginForm, #registerForm {
+    background: #fff;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 320px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+#loginForm input,
+#registerForm input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+#loginForm input:focus,
+#registerForm input:focus {
+    outline: none;
+    border-color: #6c5ce7;
+    box-shadow: 0 0 5px rgba(108,92,231,0.5);
+}
+
+/* BUTTONS */
+.card-btn {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 6px;
+    background: #6c5ce7;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card-btn:hover {
+    background: #5a4acb;
+}
+
+/* LINKS */
+p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+p a {
+    color: #6c5ce7;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+p a:hover {
+    color: #5a4acb;
+}
+
+/* RESPONSIVE */
+@media (max-width: 400px) {
+    #loginForm, #registerForm {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN FORM -->
+        <div id="loginForm">
+          <h1>Login</h1>
+            <input type="text" id="loginStudentID" placeholder="Student ID">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()" class="card-btn">Login</button>
+            <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div id="registerForm" style="display:none;">
+            <input type="text" id="regStudentID" placeholder="Student ID">
+            <input type="email" id="regEmail" placeholder="Email">
+            <input type="password" id="regPassword" placeholder="Password">
+            <button onclick="register()" class="card-btn">Register</button>
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
+
+<script src="login.js"></script>
+</body>
+</html>

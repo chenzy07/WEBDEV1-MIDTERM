@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScholarPortal - Profile</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f5f6fa;
+    color: #333;
+}
+
+/* HEADER */
+.header {
+    height: 60px;
+    background: #6c5ce7;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.header button {
+    background: #fff;
+    color: #6c5ce7;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* CONTAINER */
+.container {
+    display: flex;
+    min-height: calc(100vh - 60px);
+}
+
+.sidebar { width: 220px; background: #fff; border-right: 1px solid #e0e0e0; padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.sidebar button { background: #f1f1f1; border: none; padding: 0.6rem; border-radius: 6px; cursor: pointer; transition: 0.3s; text-align: left; font-weight: 500; }
+.sidebar button:hover { background: #6c5ce7; color: #fff; }
+
+/* MAIN CONTENT */
+.main {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* PROFILE HEADER */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #dfe6e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #6c5ce7;
+    font-weight: bold;
+}
+
+/* FEATURE CARDS */
+.feature-card {
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feature-card label {
+    font-weight: 600;
+    color: #555;
+}
+
+.feature-card button {
+    background: #6c5ce7;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.feature-card button:hover {
+    background: #5a4acb;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .container { flex-direction: column; }
+    .sidebar { width: 100%; flex-direction: row; overflow-x: auto; }
+    .sidebar button { flex: 1; white-space: nowrap; }
+    .main { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div>ScholarPortal</div>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<!-- CONTAINER -->
+<div class="container">
+
+    <!-- MAIN NAVIGATION SIDEBAR -->
+    <div class="sidebar">
+        <button onclick="showDashboardHome()">Dashboard</button>
+        <button onclick="showSection('register')">Register</button>
+        <button onclick="showSection('profile')">Profile</button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <!-- PROFILE INFO -->
+        <div class="profile-header">
+            <div class="avatar" id="profileAvatar">S</div>
+            <div>
+                <h2 id="profileStudentID">Student Name</h2>
+                <p id="profileEmail">student@email.com</p>
+            </div>
+        </div>
+
+        <!-- PASSWORD & EMAIL EDIT -->
+        <div class="feature-card">
+            <label>Password</label>
+            <button onclick="changePassword()">Change Password</button>
+        </div>
+        <div class="feature-card">
+            <label>Email</label>
+            <button onclick="changeEmail()">Edit Email</button>
+        </div>
+
+        <!-- ADDITIONAL FEATURES -->
+        <div class="feature-card"><label>Notifications</label><p>Coming soon</p></div>
+        <div class="feature-card"><label>Files</label><p>Coming soon</p></div>
+        <div class="feature-card"><label>Settings</label><p>Coming soon</p></div>
+        <div class="feature-card"><label>Portfolio</label><p>Coming soon</p></div>
+        <div class="feature-card"><label>QR for Mobile Login</label><p>Coming soon</p></div>
+        <div class="feature-card"><label>Global Announcements</label><p>Coming soon</p></div>
+
+    </div>
+</div>
+
+<script>
+function logout() {
+    // Optional: clear any session-specific data
+    localStorage.removeItem("loggedIn"); // if you had a flag for logged-in state
+    alert("You have been logged out.");
+    
+    // Redirect to login page
+    window.location.href = "index.html"; // replace with your login page file
+}
+
+// Optional: auto-check login state on dashboard
+window.onload = function() {
+    // If user is not logged in, redirect to login
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    if (!users.length) {
+        // No registered users, redirect to login
+        window.location.href = "index.html";
+    }
+};
+
+// EDIT FUNCTIONS
+function changeEmail(){
+    let newEmail = prompt("Enter new email:");
+    if(newEmail){
+        let user = JSON.parse(localStorage.getItem('currentUser'));
+        user.email = newEmail;
+
+        let users = JSON.parse(localStorage.getItem('users'));
+        let idx = users.findIndex(u => u.username === user.username);
+        users[idx].email = newEmail;
+
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        document.getElementById('profileEmail').innerText = newEmail;
+        alert("Email updated successfully!");
+    }
+}
+
+function changePassword(){
+    let newPassword = prompt("Enter new password:");
+    if(newPassword){
+        let user = JSON.parse(localStorage.getItem('currentUser'));
+        user.password = newPassword;
+
+        let users = JSON.parse(localStorage.getItem('users'));
+        let idx = users.findIndex(u => u.username === user.username);
+        users[idx].password = newPassword;
+
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        alert("Password updated successfully!");
+    }
+}
+
+// SIDEBAR NAVIGATION
+function showDashboardHome(){ window.location.href = "dashboard.html"; }
+function showSection(section){
+    if(section === 'register') window.location.href = "register.html";
+    else if(section === 'profile') window.location.href = "profile.html";
+}
+</script>
+</body>
+</html>

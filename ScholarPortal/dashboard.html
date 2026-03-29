@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScholarPortal</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div id="dashboard">
+  <!-- HEADER -->
+  <div class="header">
+    <div>ScholarPortal</div>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- SIDEBAR + MAIN -->
+  <div class="container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <button onclick="showDashboardHome()">Dashboard</button>
+      <button onclick="showSection('register')">Register</button>
+      <button onclick="showSection('profile')">Profile</button>
+    </div>
+
+    <!-- MAIN AREA -->
+    <div class="main">
+      <!-- DASHBOARD HOME -->
+      <div id="dashboardHome">
+        <h2>Your Subjects</h2>
+        <div class="course-grid">
+          <div class="course-card" onclick="openSubject('web')">
+            <h3>Web Development</h3>
+            <p>View class</p>
+          </div>
+          <div class="course-card" onclick="openSubject('db')">
+            <h3>Database Systems</h3>
+            <p>View class</p>
+          </div>
+          <div class="course-card" onclick="openSubject('net')">
+            <h3>Networking</h3>
+            <p>View class</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBJECT PAGE -->
+      <div id="subjectPage">
+        <button onclick="backToDashboard()">← Back</button>
+        <h2 id="subjectTitle"></h2>
+
+        <div class="course-card">
+          <h3>Announcements</h3>
+          <ul id="announcementList">
+            <li>No announcements yet.</li>
+          </ul>
+        </div>
+
+        <div class="course-card">
+          <h3>Assignments</h3>
+          <ul id="assignmentList"></ul>
+        </div>
+
+        <div class="course-card">
+          <h3>Grades</h3>
+          <p id="gradeDisplay"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="dashboard.js"></script>
+<script src="login.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
