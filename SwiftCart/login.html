@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SwiftCart - Login</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* SPLIT SCREEN LAYOUT */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.login-left, .login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.login-left {
+  background: #111; /* fallback color */
+  overflow: hidden;
+}
+
+/* Carousel slides */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* Optional overlay text */
+.slide-text {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+}
+
+/* Login form */
+.login-right {
+  background: #f3f4f6;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 320px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.login-form button:hover {
+  background: #dc2626;
+}
+
+.login-form p {
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-form span {
+  color: #ef4444;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .login-container {
+    flex-direction: column;
+  }
+  .login-left, .login-right {
+    flex: none;
+    width: 100%;
+    height: 50vh;
+  }
+  .login-left {
+    height: 200px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <!-- Left: Marketing Carousel -->
+  <div class="login-left">
+    <div class="slide active" style="background-image: url('hero-banner.jpg');">
+      <div class="slide-text">Discover New Arrivals!</div>
+    </div>
+    <div class="slide" style="background-image: url('sale-banner.jpg');">
+      <div class="slide-text">Huge Sale on Top Products!</div>
+    </div>
+    <div class="slide" style="background-image: url('gaming-banner.jpg');">
+      <div class="slide-text">Gaming Gear You’ll Love</div>
+    </div>
+  </div>
+
+  <!-- Right: Login Form -->
+  <div class="login-right">
+    <div class="login-form">
+      <h2>Welcome Back!</h2>
+      <input type="text" id="username" placeholder="Username or Email">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+      <p>Don't have an account? <span onclick="register()">Register</span></p>
+      <p><span onclick="forgotPassword()">Forgot Password?</span></p>
+    </div>
+  </div>
+</div>
+
+<script>
+function login() {
+  const user = document.getElementById('username').value;
+  const pass = document.getElementById('password').value;
+  if(user && pass){
+    alert('Logged in successfully!');
+    window.location.href = 'index.html';
+  } else {
+    alert('Please enter username and password.');
+  }
+}
+
+function register(){
+  alert('Redirect to registration page.');
+}
+
+function forgotPassword(){
+  alert('Redirect to forgot password page.');
+}
+
+/* CAROUSEL JS */
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}, 4000); // change slide every 4 seconds
+</script>
+
+</body>
+</html>

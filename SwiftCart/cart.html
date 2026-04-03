@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SwiftCart</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">SwiftCart</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="cart.html">Cart</a></li>
+<li><a href="checkout.html">Checkout</a></li>
+</ul>
+
+    <div class="nav-right">
+         <a href="login.html">Login</a>
+        <button id="darkModeToggle">🌙</button>
+         <div style="position:relative; margin-left:10px; cursor:pointer;">
+      🛒 Cart
+      <span id="cart-count">0</span>
+    </div>
+</nav>
+
+<div class="page">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+<h3>Filters</h3>
+
+<div class="filter">
+<p>Select Products</p>
+<button class="product-btn">Electronics</button>
+</div>
+
+<div class="filter">
+<p>Price</p>
+<input type="text" placeholder="$ 0.00">
+<input type="text" placeholder="$ ∞">
+</div>
+
+
+<div class="sidebar-footer">
+
+<div class="socials">
+<div class="social">📷</div>
+<div class="social">✈️</div>
+<div class="social">▶️</div>
+</div>
+
+<p class="disclaimer">
+SwiftCart is not affiliated, associated, or partnered with any International Products.
+</p>
+
+<p class="copyright">
+© 2025–2026 SwiftCart HOOPS All Rights Reserved
+</p>
+
+<div class="contact">
+<p>support@swiftcart.gg</p>
+</div>
+
+<div class="sidebar-links">
+<div class="sidebar-btn">Terms of Service →</div>
+<div class="sidebar-btn">Privacy Policy →</div>
+<div class="sidebar-btn">AML KYC Policy →</div>
+</div>
+
+</div>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<!-- BANNER -->
+<div class="banner">
+<h2>NEW ARRIVALS!</h2>
+<p>You will never lose anything with SwiftCart</p>
+</div>
+
+
+<!-- CATEGORY BUTTONS -->
+<div class="categories">
+<button>Gaming</button>
+<button>Ram</button>
+<button>Smart Phone</button>
+<button>Laptop</button>
+</div>
+
+
+<!-- SEARCH -->
+<div class="search-bar">
+<input type="text" id="search" placeholder="Quick search">
+</div>
+
+
+<!-- ITEMS -->
+<div class="items" id="items">
+
+<div class="card">
+  <img src="ip17.jpg" alt="Iphone 17 Pro Max">
+  <div class="card-text">
+    <h4>Iphone 17 Pro Max</h4>
+    <p>$1200</p>
+  </div>
+  <button class="add-btn" onclick="addToCart('Iphone 17 Pro Max', 1200)">
+    🛒 Add to Cart
+  </button>
+</div>
+
+<div class="card">
+  <img src="tuf.jpg" alt="Asus TUF A16">
+  <div class="card-text">
+    <h4>Asus TUF A16</h4>
+    <p>$800</p>
+  </div>
+  <button class="add-btn" onclick="addToCart('Asus TUF A16', 800)">
+    🛒 Add to Cart
+  </button>
+</div>
+
+<div class="card">
+  <img src="ram.jpg" alt="Kingston 16GB DDR5">
+  <div class="card-text">
+    <h4>Kingston 16GB DDR5 RAM</h4>
+    <p>$200</p>
+  </div>
+  <button class="add-btn" onclick="addToCart('Kingston 16GB DDR5', 200)">
+    🛒 Add to Cart
+  </button>
+</div>
+
+<div class="card">
+  <img src="nintendo.jpg" alt="Asus TUF A16">
+  <div class="card-text">
+    <h4>Nintendo Switch</h4>
+    <p>$500</p>
+  </div>
+  <button class="add-btn" onclick="addToCart('Nintendo Switch', 500)">
+    🛒 Add to Cart
+  </button>
+</div>
+
+
+</div>
+
+</main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

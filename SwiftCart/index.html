@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SwiftCart - The Smarter Way to Shop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">SwiftCart</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="cart.html">Shop</a></li>
+    <li><a href="checkout.html">Checkout</a></li>
+  </ul>
+  <div class="nav-right">
+      <a href="login.html">Login</a>
+    <button id="darkModeToggle">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="banner" style="margin:25px; border-radius:14px; text-align:center; background:url('images/hero-banner.jpg') center/cover no-repeat; color:white; height:400px; display:flex; flex-direction:column; justify-content:center;">
+  <h1 style="font-size:36px;">Discover the Latest Tech</h1>
+  <button onclick="window.location.href='cart.html'" style="margin-top:20px; padding:14px 25px; border:none; border-radius:8px; background:#ef4444; color:white; cursor:pointer; font-weight:600; font-size:16px;">
+    Shop Now 🛒
+  </button>
+</section>
+
+<!-- PROMOTIONAL BANNERS -->
+<div class="items" style="margin:0 25px 25px 25px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;">
+  <div class="card" style="background:url('images/sale.jpg') center/cover no-repeat; color:white; height:200px; display:flex; flex-direction:column; justify-content:flex-end; padding:15px;">
+    <h3>Spring Sale</h3>
+    <button class="add-btn" onclick="window.location.href='cart.html'" style="background:#ef4444;">Shop Now</button>
+  </div>
+  <div class="card" style="background:url('images/new-arrivals.jpg') center/cover no-repeat; color:white; height:200px; display:flex; flex-direction:column; justify-content:flex-end; padding:15px;">
+    <h3>New Arrivals</h3>
+    <button class="add-btn" onclick="window.location.href='cart.html'" style="background:#ef4444;">Shop Now</button>
+  </div>
+  <div class="card" style="background:url('images/top-deals.jpg') center/cover no-repeat; color:white; height:200px; display:flex; flex-direction:column; justify-content:flex-end; padding:15px;">
+    <h3>Top Deals</h3>
+    <button class="add-btn" onclick="window.location.href='cart.html'" style="background:#ef4444;">Shop Now</button>
+  </div>
+</div>
+
+<!-- FEATURED CATEGORIES -->
+<section class="items" style="margin:0 25px 25px 25px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px;">
+  <div class="card" style="background:url('images/gaming.jpg') center/cover no-repeat; height:150px;"></div>
+  <div class="card" style="background:url('images/ram.jpg') center/cover no-repeat; height:150px;"></div>
+  <div class="card" style="background:url('images/smartphone.jpg') center/cover no-repeat; height:150px;"></div>
+  <div class="card" style="background:url('images/laptop.jpg') center/cover no-repeat; height:150px;"></div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section style="text-align:center; margin:25px;">
+  <h2 style="margin-bottom:15px;">Ready to Shop?</h2>
+  <button onclick="window.location.href='cart.html'" style="padding:14px 25px; border:none; border-radius:8px; background:#ef4444; color:white; cursor:pointer; font-weight:600; font-size:16px;">
+    Start Shopping 🛒
+  </button>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <h3>SwiftCart</h3>
+      <p>Your one-stop shop for tech, gaming, and more!</p>
+    </div>
+    <div class="footer-center">
+      <h4>Links</h4>
+      <div class="footer-links">
+        <div class="footer-btn" onclick="window.location.href='cart.html'">Shop</div>
+        <div class="footer-btn">Terms of Service</div>
+        <div class="footer-btn">Privacy Policy</div>
+        <div class="footer-btn">Contact</div>
+      </div>
+    </div>
+    <div class="footer-right">
+      <h4>Follow Us</h4>
+      <div class="socials">
+        <div class="social">📷</div>
+        <div class="social">✈️</div>
+        <div class="social">▶️</div>
+      </div>
+      <p class="disclaimer">SwiftCart is not affiliated with any International Products.</p>
+      <p class="copyright">© 2025–2026 SwiftCart All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
