@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary | Velvet Crust</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">Velvet Crust</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="design.html">Custom Cake</a>
+        <a href="summary.html" class="active">Cart (<span id="cart-count">0</span>)</a>
+        <a href="login.html" class="btn-outline">Login</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-summary">
+    <div class="hero-text">
+        <h1>🛒 Your Order Summary</h1>
+        <p>Review your items before checkout.</p>
+    </div>
+</section>
+
+<!-- CART TABLE -->
+<section class="summary-container">
+    <div class="cart-grid">
+
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- JS will populate items -->
+            </tbody>
+        </table>
+
+        <div class="grand-total">
+            <h3>Grand Total</h3>
+            <h1>$<span id="total-price">0</span></h1>
+            <a href="pickup.html"><button class="btn-cream" onclick="alert('Proceeding to Payment...')">Checkout</button></a>
+        </div>
+
+    </div>
+</section>
+
+<!-- MODAL -->
+<div id="cart-modal" class="modal-overlay">
+    <div class="container modal-container">
+        <h2 id="modal-title">Confirm Selection</h2>
+        <p id="modal-msg"></p>
+        <div id="qty-box" class="qty-box">
+            <label>Quantity: </label>
+            <input type="number" id="item-qty" value="1" min="1">
+        </div>
+        <div class="modal-buttons">
+            <button id="modal-yes" class="btn-cream">Yes</button>
+            <button id="modal-no" class="btn-cream btn-cancel">No</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

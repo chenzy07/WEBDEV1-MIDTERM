@@ -1,0 +1,152 @@
+:root {
+    --cream: #fff8e7;
+    --cream-hover: #f2e6d8;
+    --glass: rgba(255, 255, 255, 0.55);
+    --glass-strong: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.7);
+    --text-main: #3e2f2b;
+    --text-soft: #6b5b55;
+}
+
+/* --- BODY --- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #fffaf0, #fdf5e6, #f3e5d8);
+    background-attachment: fixed;
+    color: var(--text-main);
+}
+
+/* --- NAVBAR --- */
+nav {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12), inset 0 1px rgba(255,255,255,0.6);
+    position: sticky;
+    top: 10px;
+    z-index: 1000;
+}
+
+.logo { font-size: 1.5rem; font-weight: bold; }
+.nav-links a { margin-left: 12px; text-decoration: none; color: var(--text-main); padding: 8px 18px; border-radius: 25px; transition: 0.25s; }
+.nav-links a:hover { background: var(--cream-hover); }
+
+/* OUTLINE BUTTON */
+.btn-outline { border: 1px solid var(--cream); background: transparent; color: var(--text-main); }
+.btn-outline:hover { background: var(--cream-hover); color: var(--text-main); }
+
+/* --- CONTAINER --- */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 35px;
+    border-radius: 35px;
+    background: var(--glass);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+}
+
+/* --- PICKUP FORM --- */
+.pickup-form .form-group {
+    margin-bottom: 20px;
+}
+
+.pickup-form label { display: block; margin-bottom: 6px; font-weight: bold; }
+.pickup-form input, .pickup-form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255,255,255,0.5);
+    font-weight: bold;
+}
+
+/* FULL WIDTH BUTTON */
+.full-btn { width: 100%; padding: 12px 0; margin-top: 15px; }
+
+/* --- GRID CAKES --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.cake-card {
+    padding: 18px;
+    border-radius: 25px;
+    text-align: center;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.cake-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+.cake-card h3 { margin-bottom: 8px; }
+.cake-card h1 { margin: 10px 0; }
+
+/* --- BUTTONS --- */
+.btn-cream {
+    background: var(--cream);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text-main);
+    transition: 0.25s;
+}
+.btn-cream:hover { background: var(--cream-hover); transform: scale(1.05); }
+
+/* --- MODAL --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(6px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-box {
+    width: 320px;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    background: var(--glass-strong);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    z-index: 10000;
+}
+
+.modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+.modal-actions button { flex: 1; }
+.cancel-btn { background: rgba(255,255,255,0.5); }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    nav { flex-direction: column; align-items: flex-start; }
+    .container { padding: 25px; }
+    .grid { grid-template-columns: 1fr; }
+}

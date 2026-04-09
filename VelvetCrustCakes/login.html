@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Velvet Crust</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">Velvet Crust</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="design.html">Custom Cake</a>
+        <a href="summary.html">Cart (<span id="cart-count">0</span>)</a>
+    </div>
+</nav>
+
+<!-- LOGIN CARD -->
+<section class="container centered-card">
+    <div class="login-card">
+        <div class="logo" style="margin-bottom: 15px;">Velvet Crust</div>
+        <h2 style="margin-bottom: 25px;">Welcome Back</h2>
+
+        <div class="input-group">
+            <input type="email" placeholder="Email Address" id="login-email">
+        </div>
+
+        <div class="input-group">
+            <input type="password" placeholder="Password" id="login-password">
+        </div>
+
+        <button class="btn-cream full-btn" onclick="login()">Sign In</button>
+
+        <p style="margin-top: 20px; text-align:center;">
+            <a href="index.html" style="color: var(--cream); text-decoration: none;">← Back to Home</a>
+        </p>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

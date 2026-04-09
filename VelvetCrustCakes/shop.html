@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet Crust | Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">Velvet Crust</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="design.html">Custom Cake</a>
+        <a href="summary.html">Cart (<span id="cart-count">0</span>)</a>
+        <a href="login.html" class="btn-outline">Login</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-shop">
+    <div class="hero-text">
+        <h1>Explore Our Delicious Collection</h1>
+        <p>Choose from a variety of cakes, baked fresh daily with love and artisan care.</p>
+    </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-shop">
+    <h2>Filter by Category</h2>
+    <div class="category-grid">
+        <div class="category-card">Chocolate</div>
+        <div class="category-card">Fruit Cakes</div>
+        <div class="category-card">Custom Designs</div>
+        <div class="category-card">Specialty</div>
+    </div>
+</section>
+
+<!-- FULL PRODUCT GRID -->
+<section class="full-collection">
+    <h2>Our Full Collection</h2>
+    <div class="grid" id="full-grid"></div>
+</section>
+
+<!-- MODAL -->
+<div id="cart-modal" class="modal-overlay">
+    <div class="modal-box">
+        <h2 id="modal-title">Confirm Selection</h2>
+        <p id="modal-msg"></p>
+        <div id="qty-box">
+            <label>Quantity</label>
+            <input type="number" id="item-qty" value="1" min="1">
+        </div>
+        <div class="modal-actions">
+            <button id="modal-yes" class="btn-cream">Confirm</button>
+            <button id="modal-no" class="btn-outline">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

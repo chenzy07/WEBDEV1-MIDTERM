@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet Crust | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 🔥 NAVBAR -->
+<nav>
+    <div class="logo">Velvet Crust</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="design.html">Custom Cake</a>
+        <a href="summary.html">Cart (<span id="cart-count">0</span>)</a>
+        <a href="login.html">Login</a>
+    </div>
+</nav>
+
+<!-- 🔥 HERO SECTION (NEW STYLE) -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Handcrafted Cakes Made to Delight</h1>
+        <p>From soft velvet textures to rich artisan flavors — every cake is made with passion.</p>
+
+        <div class="hero-buttons">
+            <a href="shop.html" class="btn-cream">Shop Now</a>
+            <a href="design.html" class="btn-outline">Customize</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900" alt="Cake">
+    </div>
+</section>
+
+<!-- 🔥 FEATURED CAKE -->
+<section class="featured">
+    <div class="featured-image">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=900">
+    </div>
+
+    <div class="featured-text">
+        <h2>Signature Chocolate Dream</h2>
+        <p>Our best-selling cake with rich layers of premium chocolate and silky ganache.</p>
+        <h3>₱450</h3>
+        <button class="btn-cream">Order Now</button>
+    </div>
+</section>
+
+<!-- 🔥 CATEGORY / QUICK NAV -->
+<section class="categories">
+    <h2>Explore Our Cakes</h2>
+
+    <div class="category-grid">
+        <div class="category-card">
+            <h3>Chocolate</h3>
+        </div>
+
+        <div class="category-card">
+            <h3>Fruit Cakes</h3>
+        </div>
+
+        <div class="category-card">
+            <h3>Custom Designs</h3>
+        </div>
+    </div>
+</section>
+
+<!-- 🔥 TRENDING -->
+<section class="trending">
+    <h2>Trending This Week</h2>
+    <div class="grid" id="trending-grid"></div>
+</section>
+
+<!-- 🔥 CALL TO ACTION -->
+<section class="cta">
+    <h2>Make Your Celebration Special 🎉</h2>
+    <p>Design your dream cake with our custom builder.</p>
+    <a href="design.html" class="btn-cream">Create Your Cake</a>
+</section>
+
+<!-- 🔥 MODAL (FIXED STRUCTURE) -->
+<div id="cart-modal" class="modal-overlay">
+    <div class="modal-box">
+        <h2 id="modal-title">Confirm Selection</h2>
+        <p id="modal-msg"></p>
+
+        <div id="qty-box">
+            <label>Quantity</label>
+            <input type="number" id="item-qty" value="1" min="1">
+        </div>
+
+        <div class="modal-actions">
+            <button id="modal-yes" class="btn-cream">Confirm</button>
+            <button id="modal-no" class="btn-outline">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
