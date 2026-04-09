@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Nexus Events</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body data-page="tickets">
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Nexus Events</a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="tickets.html" class="nav-link">Tickets</a>
+      <a href="venue.html" class="nav-link">Venue</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <button class="menu-toggle">☰</button>
+  </div>
+</header>
+
+  <!-- Checkout -->
+  <main class="container">
+    <section class="ticket-builder">
+      <h1 class="section-title" style="text-align:center;">Checkout</h1>
+
+      <form id="checkoutForm" class="panel">
+        <label>Full Name
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+
+        <h2 style="margin-top:1.5rem;">Tickets</h2>
+        <div id="ticketSummary">
+          <div class="ticket-row" data-ticket-row data-price="45">
+        <div>
+          <strong>Pulse Pass</strong>
+          <p>Entry + merch lane</p>
+        </div>
+        <div class="qty-control">
+          <button type="button" data-qty-minus>-</button>
+          <input type="text" value="0" data-qty>
+          <button type="button" data-qty-plus>+</button>
+        </div>
+        <div>$45 each</div>
+      </div>
+      <div class="ticket-row" data-ticket-row data-price="85">
+        <div>
+          <strong>Glow Pass</strong>
+          <p>Priority entry + lounge</p>
+        </div>
+        <div class="qty-control">
+          <button type="button" data-qty-minus>-</button>
+          <input type="text" value="0" data-qty>
+          <button type="button" data-qty-plus>+</button>
+        </div>
+        <div>$85 each</div>
+      </div>
+      <div class="ticket-row" data-ticket-row data-price="140">
+        <div>
+          <strong>Orbit Pass</strong>
+          <p>Balcony + backstage</p>
+        </div>
+        <div class="qty-control">
+          <button type="button" data-qty-minus>-</button>
+          <input type="text" value="0" data-qty>
+          <button type="button" data-qty-plus>+</button>
+        </div>
+        <div>$140 each</div>
+      </div>
+        </div>
+
+        <div class="total-box">
+          <a href="#" id="totalDisplay">Total: $0</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top:1rem;">Generate QR Code</button>
+      </form>
+
+      <div id="qrContainer" style="margin-top:2rem; text-align:center;"></div>
+    </section>
+  </main>
+
+  <<footer class="footer">
+    <p>© <span data-year></span> Nexus Events. All rights reserved.</p>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+  <script>
+    // Get tickets from URL query
+    const urlParams = new URLSearchParams(window.location.search);
+    const tickets = JSON.parse(decodeURIComponent(urlParams.get("tickets") || "[]"));
+    const ticketSummary = document.getElementById("ticketSummary");
+    const totalDisplay = document.getElementById("totalDisplay");
+
+    let total = 0;
+    tickets.forEach(t => {
+      const row = document.createElement("div");
+      row.className = "ticket-row";
+      row.innerHTML = `
+        <div>
+          <strong>${t.type}</strong>
+          <span>Qty: ${t.qty}</span>
+        </div>
+        <div class="ticket-price">$${t.price * t.qty}</div>
+      `;
+      ticketSummary.appendChild(row);
+      total += t.price * t.qty;
+    });
+
+    totalDisplay.textContent = `Total: $${total}`;
+
+    // QR Code generation
+    const form = document.getElementById("checkoutForm");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      if(!name || !email) return alert("Please fill all fields.");
+
+      const ticketInfo = `Name: ${name}\nEmail: ${email}\nTickets:\n` +
+        tickets.map(t => `${t.type} x ${t.qty}`).join("\n") +
+        `\nTotal: $${total}`;
+
+      const qrContainer = document.getElementById("qrContainer");
+      qrContainer.innerHTML = "";
+      new QRCode(qrContainer, {
+        text: ticketInfo,
+        width: 250,
+        height: 250
+      });
+
+      form.querySelectorAll("input, button").forEach(el => el.disabled = true);
+    });
+  </script>
+</body>
+</html>
