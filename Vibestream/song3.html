@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Anxious - Ginuwine</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+    <a href="home.html" class="logo">
+        <img src="logo.png" class="logo-img">
+        <span>CCS MUSIC</span>
+    </a>
+    <div class="search-container">
+        <input type="text" placeholder="Search songs, albums, artists">
+        <button>🔍</button>
+    </div>
+
+    <div class="user-profile">
+       <a href="login.html"><img src="user.png" alt="User"></a>
+    </div>
+</div>
+
+<div class="main">
+
+    <div class="outer-left">
+        <h3>Up Next</h3>
+        <div class="song-info">
+            <a href="song1.html"><img src="cover.gif" class="cover"></a>
+            <div>
+                <p>Kalapastangan</p>
+                <p class="artist">Fitterkarma</p>
+            </div>
+        </div>
+        <div class="song-info">
+            <a href="song2.html"><img src="afterhours.png" class="cover"></a>
+            <div>
+                <p>After Hours</p>
+                <p class="artist">The Weeknd</p>
+            </div>
+        </div>
+        <div class="song-info">
+            <a href="song3.html"><img src="ginuwine.jpg" class="cover"></a>
+            <div>
+                <p>Anxious</p>
+                <p class="artist">Ginuwine</p>
+            </div>
+        </div>
+
+        <div class="song-info">
+            <a href="song4.html"><img src="soap.png" class="cover"></a>
+            <div>
+                <p>Tensionado</p>
+                <p class="artist">Soapdish</p>
+            </div>
+        </div>
+
+        <div class="song-info">
+            <a href="song5.html"><img src="ag.jpg" class="cover"></a>
+            <div>
+                <p>Needy</p>
+                <p class="artist">Ariana Grande</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="center">
+        <div class="inner-container">
+            <div class="inner-left">
+                <img src="ginuwine.jpg" alt="Song Cover">
+            </div>
+            <div class="inner-right" id="lyrics">
+                <p>Nine o'clock (nine o'clock), home alone (home alone) paging you (paging you)</p>
+                <p>Wishing you'd come over my place (my place)</p>
+                <p>After while (after while), let me know (let me know)</p>
+                <p>We can't just keep talking about last time (last time) you were here (you were here)</p>
+                <p>When we did (when we did) (no sleep 'til morning)</p>
+                <p>Only bubble baths (bubble baths)</p>
+                <p>And back rubs (and back rubs)</p>
+                <p>Hit me back (hit me back)</p>
+                <p>Girl, I hope you hurry 'cause</p>
+                <br>
+                <p>I'm so anxious (so anxious), ooh, ooh</p>
+                <p>So meet me at 11:30</p>
+                <p>I love the way you're talkin' dirty, said I'm (I said) (so anxious)</p>
+                <p>Girl, could you quit this stallin'</p>
+                <p>You know I'm a sexaholic, said I'm (so anxious)</p>
+                <p>So meet me at 11:30</p>
+                <p>I love the way you're talkin' dirt, said I'm (so anxious)</p>
+                <p>Girl, could you quit this stallin'</p>
+                <p>You know I'm a sexaholic, said I'm</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="player">
+    <div class="song-info">
+      <img src="ginuwine.jpg" class="cover">
+      <div>
+        <p><strong>Anxious</strong></p>
+        <p>Ginuwine</p>
+      </div>
+    </div>
+
+    <div class="controls">
+    <a href="song2.html">
+        <button onclick="prevSong()">⏮</button>
+      </a>
+      <button onclick="playPause()" id="playBtn">▶</button>
+      <a href="song4.html">
+        <button onclick="nextSong()">⏭</button>
+      </a>
+      <input type="range" id="progress" value="0">
+    </div>
+
+    <div class="volume">
+      🔊
+      <input type="range" id="volume" min="0" max="1" step="0.1">
+    </div>
+</div>
+
+<audio id="audio" src="song3.mp3" autoplay></audio>
+<script src="script.js"></script>
+
+</body>
+</html>

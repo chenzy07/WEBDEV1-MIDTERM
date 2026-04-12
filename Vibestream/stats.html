@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Stats - CCS Music</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+    padding-bottom: 100px;
+}
+
+.header {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    background: #181818;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+}
+
+.logo-img {
+    height: 50px;
+}
+
+.main {
+    display: flex;
+}
+
+.outer-left {
+    width: 200px;
+    background: #1e1e1e;
+    padding: 20px;
+    height: calc(100vh - 75px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+.outer-left a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.outer-left a:hover {
+    background: #333;
+}
+
+.add-playlist {
+    background: #2a2a2a;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.add-playlist:hover {
+    background: #3a3a3a;
+    transform: scale(1.03);
+}
+
+.playlist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 5px;
+}
+
+.playlist-list a {
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+.playlist-list a:hover {
+    background: #333;
+}
+
+.add-playlist {
+    background: #2a2a2a;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.add-playlist:hover {
+    background: #3a3a3a;
+}
+
+.center {
+    flex: 1;
+    padding: 30px;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #181818;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.profile-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.profile-info h2 {
+    margin: 0;
+}
+
+.profile-info p {
+    color: #aaa;
+    margin: 5px 0 0 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: #181818;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.stat-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    background: linear-gradient(45deg, #00f7ff, #ff00ff, #00f7ff);
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.stat-card:hover {
+    transform: scale(1.05);
+}
+
+.stat-card:hover::before {
+    opacity: 1;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.section-title {
+    margin-top: 40px;
+}
+
+.list {
+    background: #181818;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.list-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.search-container {
+    flex: 1;                 
+    max-width: 500px;      
+    margin: 0 auto;       
+    display: flex;
+    background-color: #212121;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+}
+
+.search-container button {
+    background-color: #303030;
+    border: none;
+    color: white;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.user-profile {
+    margin-left: auto; 
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;   
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #333;
+    transition: transform 0.2s;
+}
+
+.user-profile img:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <a href="home.html" class="logo">
+        <img src="logo.png" class="logo-img">
+        <span>CCS MUSIC</span>
+    </a>
+
+     <div class="search-container">
+        <input type="text" placeholder="Search songs, albums, artists">
+        <button>🔍</button>
+    </div>
+
+    <div class="user-profile">
+        <a href="login.html"><img src="user.png" alt="User"></a>
+    </div>
+</div>
+
+<div class="main">
+
+    <div class="outer-left">
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="library.html">Library</a>
+    <a href="stats.html">Personal Stats</a>
+
+    <hr style="border: 0; height: 1px; background: #333; margin: 10px 0;">
+
+    <button class="add-playlist">+ Add Playlist</button>
+
+    <div class="playlist-list">
+        <a href="#">My Favorites</a>
+        <a href="#">Chill Mix</a>
+        <a href="#">Workout</a>
+    </div>
+</div>
+
+
+    <div class="center">
+
+
+        <div class="profile-card">
+            <img src="user.png">
+            <div class="profile-info">
+                <h2>Jacky Chen</h2>
+                <p>Premium Member • Joined 2024</p>
+            </div>
+        </div>
+
+        <h1>Your Listening Stats</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">1,284</div>
+                <div class="stat-label">Songs Played</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">96 hrs</div>
+                <div class="stat-label">Listening Time</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">134</div>
+                <div class="stat-label">Artists</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Playlists</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Top Artists</h2>
+        <div class="list">
+            <div class="list-item">The Weeknd</div>
+            <div class="list-item">Ariana Grande</div>
+            <div class="list-item">Ginuwine</div>
+            <div class="list-item">Soapdish</div>
+            <div class="list-item">Fitterkarma</div>
+        </div>
+
+        <h2 class="section-title">Top Songs</h2>
+        <div class="list">
+            <div class="list-item">After Hours</div>
+            <div class="list-item">Needy</div>
+            <div class="list-item">Anxious</div>
+            <div class="list-item">Tensionado</div>
+            <div class="list-item">Kalapastangan</div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
