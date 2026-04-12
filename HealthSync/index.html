@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthSync | Modern Healthcare System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+ <!-- TOP EMERGENCY BAR -->
+<div class="top-bar">
+  <div class="marquee">
+    🚨 Emergency Hotline: +63 900 123 4567 • 24/7 Emergency Care Available • Call Immediately for Urgent Medical Assistance •
+  </div>
+</div>
+
+<header class="navbar">
+  <div class="logo">🏥 HealthSync</div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="booking.html">Booking</a>
+    <a href="login.html" class="btn">Login</a>
+  </nav>
+</header>
+
+<!-- CAROUSEL -->
+<section class="carousel">
+
+  <div class="slide active">
+    <div>
+      <h1>Modern Healthcare Made Simple</h1>
+      <p>Book appointments instantly and manage your health with ease.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div>
+      <h1>Trusted Doctors & Specialists</h1>
+      <p>Connect with certified professionals anytime, anywhere.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div>
+      <h1>Your Health, Our Priority</h1>
+      <p>Safe, fast, and reliable healthcare booking system.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="card">
+    <h3>Online Booking</h3>
+    <p>Schedule appointments in seconds.</p>
+  </div>
+
+  <div class="card">
+    <h3>24/7 Support</h3>
+    <p>We are always ready to help you.</p>
+  </div>
+
+  <div class="card">
+    <h3>Medical Records</h3>
+    <p>Secure and accessible health data.</p>
+  </div>
+
+  <div class="card">
+    <h3>Expert Doctors</h3>
+    <p>Highly qualified healthcare professionals.</p>
+  </div>
+</section>
+
+<!-- PROMO SECTION -->
+<section class="promo">
+  <div class="promo-content">
+    <h1>Take Control of Your Health Today</h1>
+    <p>
+      HealthSync gives you fast access to medical appointments, trusted doctors,
+      and secure health records — all in one modern platform.
+      No waiting lines. No stress. Just better healthcare.
+    </p>
+
+    <div class="promo-buttons">
+      <a href="contact.html" class="btn primary">Contact Us</a>
+      <a href="about.html" class="btn secondary">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function showSlide(i) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[i].classList.add("active");
+}
+
+function nextSlide() {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}
+
+function prevSlide() {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+}
+
+// Auto slide (slower + smoother)
+setInterval(nextSlide, 6000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | HealthSync</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+ <div class="top-bar">
+  <div class="marquee">
+    🚨 Emergency Hotline: +63 900 123 4567 • 24/7 Emergency Care Available • Call Immediately for Urgent Medical Assistance •
+  </div>
+</div>
+<header class="navbar">
+  <div class="logo">🏥 HealthSync</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="booking.html">Booking</a>
+    <a href="login.html" class="btn">Login</a>
+  </nav>
+</header>
+
+<!-- HEADER -->
+<section class="hero small-hero">
+  <h1>Contact Us</h1>
+  <p>We’re here to help you anytime, anywhere.</p>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-wrapper">
+
+  <!-- LEFT: FORM -->
+  <div class="contact-form">
+    <h2>Send Us a Message</h2>
+
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="text" placeholder="Subject" required>
+      <textarea placeholder="Your Message" rows="6" required></textarea>
+      <button type="submit">Submit Message</button>
+    </form>
+  </div>
+
+  <!-- RIGHT: BRANCHES -->
+<div class="branches">
+  <h2>Our Branches</h2>
+
+  <div class="branch-card">
+    <h3>🏥 Quezon City</h3>
+    <p>Main Hospital Branch</p>
+
+    <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80"
+         alt="Quezon City Branch">
+  </div>
+
+  <div class="branch-card">
+    <h3>🏥 Manila</h3>
+    <p>City Medical Center</p>
+
+    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80"
+         alt="Manila Branch">
+  </div>
+
+  <div class="branch-card">
+    <h3>🏥 Cebu</h3>
+    <p>South Health Center</p>
+
+    <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=800&q=80"
+         alt="Cebu Branch">
+  </div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+
+    <div>
+      <h3>Branches</h3>
+      <p>Quezon City</p>
+      <p>Manila</p>
+      <p>Cebu</p>
+    </div>
+
+    <div>
+      <h3>Specialties</h3>
+      <p>Cardiology</p>
+      <p>Pediatrics</p>
+      <p>Orthopedics</p>
+      <p>Neurology</p>
+    </div>
+
+    <div>
+      <h3>Patients Served</h3>
+      <p>120,000+</p>
+    </div>
+
+    <div>
+      <h3>Active Doctors</h3>
+      <p>250+ Specialists</p>
+    </div>
+
+  </div>
+</footer>
+
+<div class="chat-box" id="chatBox">
+  <div class="chat-header" onclick="toggleChat()">
+    💬 Live Support
+  </div>
+
+  <div class="chat-body" id="chatBody">
+    <p><strong>HealthSync Support:</strong> Hi! How can we help you today?</p>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" id="chatMessage" placeholder="Type message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+// FORM VALIDATION
+document.querySelector("form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let inputs = this.querySelectorAll("input, textarea");
+  let valid = true;
+
+  inputs.forEach(input => {
+    if (input.value.trim() === "") {
+      valid = false;
+      input.style.border = "2px solid red";
+    } else {
+      input.style.border = "1px solid #ccc";
+    }
+  });
+
+  if (valid) {
+    alert("Message sent successfully! We will contact you soon.");
+    this.reset();
+  } else {
+    alert("Please fill in all fields.");
+  }
+});
+
+// CHAT TOGGLE
+function toggleChat() {
+  let body = document.getElementById("chatBody");
+  let input = document.querySelector(".chat-input");
+
+  if (body.style.display === "none") {
+    body.style.display = "block";
+    input.style.display = "flex";
+  } else {
+    body.style.display = "none";
+    input.style.display = "none";
+  }
+}
+
+// SEND MESSAGE
+function sendMessage() {
+  let input = document.getElementById("chatMessage");
+  let chatBody = document.getElementById("chatBody");
+
+  if (input.value.trim() === "") return;
+
+  let msg = document.createElement("p");
+  msg.innerHTML = "<strong>You:</strong> " + input.value;
+
+  chatBody.appendChild(msg);
+  input.value = "";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Doctor Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="dash-navbar">
+  <div class="logo">🏥 HealthSync</div>
+
+  <div class="nav-right">
+    <span class="user-info">
+      <span data-auth-name></span> • <span data-auth-role></span>
+    </span>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<main class="portal-shell">
+
+  <section class="portal-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Doctor Dashboard</p>
+      <h2>Hello, <span data-auth-name></span>.</h2>
+      <p>
+        You are logged in as <strong><span data-auth-role></span></strong>. Manage your patient appointments, schedules, and daily workload efficiently.
+      </p>
+    </div>
+
+    <div class="hero-side">
+      <div class="mini-stat">
+        <span>Patients Today</span>
+        <strong>8</strong>
+      </div>
+      <div class="mini-stat">
+        <span>Next Appointment</span>
+        <strong>10:30 AM</strong>
+      </div>
+      <div class="mini-stat">
+        <span>Status</span>
+        <strong>Available</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="metric-grid">
+    <article class="metric-card">
+      <span>Appointments Today</span>
+      <strong>8</strong>
+      <p>Scheduled patient consultations for the day.</p>
+    </article>
+    <article class="metric-card">
+      <span>Completed</span>
+      <strong>21</strong>
+      <p>Consultations successfully completed this week.</p>
+    </article>
+    <article class="metric-card">
+      <span>Pending Reviews</span>
+      <strong>3</strong>
+      <p>Patient records that still need updates.</p>
+    </article>
+  </section>
+
+  <section class="panel notification-center">
+    <p class="eyebrow">Notifications</p>
+    <div class="notification-header">
+      <h3>Doctor alerts</h3>
+      <span class="notification-summary">2 unread</span>
+    </div>
+
+    <div class="notification-list">
+      <div class="notification-item unread">
+        <div class="notification-dot"></div>
+        <div>
+          <strong>New patient assigned to you.</strong>
+          <p>A new consultation has been booked for today.</p>
+        </div>
+        <span class="notification-time">10 min ago</span>
+      </div>
+
+      <div class="notification-item">
+        <div class="notification-dot"></div>
+        <div>
+          <strong>Schedule updated.</strong>
+          <p>Your afternoon availability has been extended.</p>
+        </div>
+        <span class="notification-time">1 hr ago</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-grid">
+
+    <article class="panel">
+      <p class="eyebrow">Today's Tasks</p>
+      <h3>Doctor focus list</h3>
+
+      <div class="task-list">
+        <div class="task-item">
+          <strong>Review patient records</strong>
+          <p>Update medical notes after consultations.</p>
+        </div>
+        <div class="task-item">
+          <strong>Prepare prescriptions</strong>
+          <p>Finalize prescriptions for completed sessions.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <p class="eyebrow">Upcoming Appointment</p>
+      <h3>Next patient</h3>
+      <div>
+        <p><strong>Juan Dela Cruz</strong></p>
+        <p>10:30 AM • General Consultation</p>
+      </div>
+    </article>
+
+    <article class="panel">
+      <p class="eyebrow">Daily Notes</p>
+      <h3>Summary</h3>
+      <div class="info-list">
+        <div class="list-item">
+          <strong>Workload</strong>
+          <small>Moderate</small>
+          <p>Patient volume is steady for today.</p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+<script src="auth.js"></script>
+</body>
+</html>

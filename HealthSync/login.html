@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | HealthSync</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+ <div class="top-bar">
+  <div class="marquee">
+    🚨 Emergency Hotline: +63 900 123 4567 • 24/7 Emergency Care Available • Call Immediately for Urgent Medical Assistance •
+  </div>
+</div>
+<header class="navbar">
+  <div class="logo">🏥 HealthSync</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="booking.html">Booking</a>
+  </nav>
+</header>
+
+<!-- LOGIN SECTION -->
+<section class="login-layout">
+
+  <!-- LEFT PANEL -->
+  <article class="login-panel">
+
+    <p class="eyebrow">Sign In</p>
+    <h2>Enter your credentials</h2>
+    <p class="helper-text">
+      Use demo accounts or tap a card to auto-fill the form.
+    </p>
+
+    <form id="loginForm">
+
+      <div class="field-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="Enter username">
+      </div>
+
+      <div class="field-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter password">
+      </div>
+
+      <button class="submit-button" type="submit">
+        Login to Dashboard
+      </button>
+
+      <p id="loginStatus" class="status-note"></p>
+
+      <button class="register-button" type="button"
+        onclick="window.location.href='register.html'">
+        Register
+      </button>
+
+    </form>
+
+  </article>
+
+  <!-- RIGHT PANEL -->
+  <section class="login-side">
+
+    <p class="eyebrow">Demo Credentials</p>
+
+    <div id="accountGrid" class="account-grid">
+
+      <div class="account-card" onclick="fillLogin('admin', 'admin123')">
+        <h4>Admin</h4>
+        <p>admin / admin123</p>
+      </div>
+
+      <div class="account-card" onclick="fillLogin('doctor', 'doc123')">
+        <h4>Doctor</h4>
+        <p>doctor / doc123</p>
+      </div>
+
+      <div class="account-card" onclick="fillLogin('patient', 'patient123')">
+        <h4>Patient</h4>
+        <p>patient / patient123</p>
+      </div>
+
+    </div>
+
+  </section>
+
+</section>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let user = document.getElementById("username").value.trim();
+  let pass = document.getElementById("password").value.trim();
+  let status = document.getElementById("loginStatus");
+
+  if (!user || !pass) {
+    status.textContent = "Please fill in all fields.";
+    status.style.color = "red";
+    return;
+  }
+
+  // ADMIN
+  if (user === "admin" && pass === "admin123") {
+    localStorage.setItem("name", "Dr. Carlos Mendoza");
+    localStorage.setItem("role", "Administrator");
+    window.location.href = "admin.html";
+  }
+
+  // DOCTOR
+  else if (user === "doctor" && pass === "doc123") {
+    localStorage.setItem("name", "Dr. Maria Santos");
+    localStorage.setItem("role", "Doctor");
+    window.location.href = "doctor.html";
+  }
+
+  // PATIENT
+  else if (user === "patient" && pass === "patient123") {
+    localStorage.setItem("name", "Juan Dela Cruz");
+    localStorage.setItem("role", "Patient");
+    window.location.href = "patient.html";
+  }
+
+  else {
+    status.textContent = "Invalid credentials.";
+    status.style.color = "red";
+  }
+});
+</script>
+
+</body>
+</html>

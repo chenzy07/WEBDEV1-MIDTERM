@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | HealthSync</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+ <div class="top-bar">
+  <div class="marquee">
+    🚨 Emergency Hotline: +63 900 123 4567 • 24/7 Emergency Care Available • Call Immediately for Urgent Medical Assistance •
+  </div>
+</div>
+<header class="navbar">
+  <div class="logo">🏥 HealthSync</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="booking.html">Booking</a>
+    <a href="login.html" class="btn">Login</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>About HealthSync</h1>
+    <p>Smarter healthcare. Faster access. Better lives.</p>
+  </div>
+</section>
+
+<!-- DESCRIPTION (IMPROVED) -->
+<section class="section">
+  <div class="card highlight">
+    <h2>🏥 Who We Are</h2>
+    <p>
+      HealthSync is a next-generation digital healthcare platform designed to bridge the gap
+      between patients and medical professionals. We simplify appointment booking, enhance
+      access to certified doctors, and provide a secure environment for managing health records.
+      <br><br>
+      Our mission is to eliminate long waiting times and make quality healthcare accessible
+      anytime, anywhere — through a modern, user-friendly system built for patients first.
+    </p>
+  </div>
+</section>
+
+<!-- MISSION / VISION -->
+<section class="section grid-2">
+
+  <div class="card">
+    <h2>🎯 Mission</h2>
+    <p>
+      To deliver fast, reliable, and accessible healthcare services through innovative digital solutions
+      that prioritize patient well-being.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🌍 Vision</h2>
+    <p>
+      To become a leading smart healthcare ecosystem that transforms the way people experience medical care.
+    </p>
+  </div>
+
+</section>
+
+<!-- CORE VALUES -->
+<section class="section">
+  <h2>💙 Core Values</h2>
+
+  <div class="values">
+    <div class="pill">Compassion</div>
+    <div class="pill">Integrity</div>
+    <div class="pill">Innovation</div>
+    <div class="pill">Excellence</div>
+    <div class="pill">Accessibility</div>
+    <div class="pill">Trust</div>
+  </div>
+</section>
+
+<!-- STAFF -->
+<section class="section">
+  <h2>👨‍⚕️ Our Medical Team</h2>
+
+  <div class="staff-grid">
+
+    <div class="staff-card">
+      <h3>Dr. Maria Santos</h3>
+      <p>Cardiologist</p>
+    </div>
+
+    <div class="staff-card">
+      <h3>Dr. John Reyes</h3>
+      <p>General Physician</p>
+    </div>
+
+    <div class="staff-card">
+      <h3>Dr. Ana Cruz</h3>
+      <p>Pediatrician</p>
+    </div>
+
+    <div class="staff-card">
+      <h3>Dr. Luis Garcia</h3>
+      <p>Orthopedic Specialist</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+
+    <div>
+      <h3>Branches</h3>
+      <p>Quezon City</p>
+      <p>Manila</p>
+      <p>Cebu</p>
+    </div>
+
+    <div>
+      <h3>Specialties</h3>
+      <p>Cardiology</p>
+      <p>Pediatrics</p>
+      <p>Orthopedics</p>
+      <p>Neurology</p>
+    </div>
+
+    <div>
+      <h3>Patients Served</h3>
+      <p>120,000+</p>
+    </div>
+
+    <div>
+      <h3>Active Doctors</h3>
+      <p>250+ Specialists</p>
+    </div>
+
+  </div>
+</footer>
+
+<div class="chat-box" id="chatBox">
+  <div class="chat-header" onclick="toggleChat()">
+    💬 Live Support
+  </div>
+
+  <div class="chat-body" id="chatBody">
+    <p><strong>HealthSync Support:</strong> Hi! How can we help you today?</p>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" id="chatMessage" placeholder="Type message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  function toggleChat() {
+  let body = document.getElementById("chatBody");
+  let input = document.querySelector(".chat-input");
+
+  if (body.style.display === "none") {
+    body.style.display = "block";
+    input.style.display = "flex";
+  } else {
+    body.style.display = "none";
+    input.style.display = "none";
+  }
+}
+
+// SEND MESSAGE
+function sendMessage() {
+  let input = document.getElementById("chatMessage");
+  let chatBody = document.getElementById("chatBody");
+
+  if (input.value.trim() === "") return;
+
+  let msg = document.createElement("p");
+  msg.innerHTML = "<strong>You:</strong> " + input.value;
+
+  chatBody.appendChild(msg);
+  input.value = "";
+}
+</script>
+
+</body>
+</html>

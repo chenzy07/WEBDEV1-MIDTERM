@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patient Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="dash-navbar">
+  <div class="logo">🏥 HealthSync</div>
+
+  <div class="nav-right">
+    <span class="user-info">
+      <span data-auth-name></span> • <span data-auth-role></span>
+    </span>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<main class="portal-shell">
+
+  <section class="portal-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Patient Portal</p>
+      <h2>Hello, <span data-auth-name></span>.</h2>
+      <p>
+        You are logged in as <strong><span data-auth-role></span></strong>. Manage your appointments, doctors, and health records easily.
+      </p>
+    </div>
+
+    <div class="hero-side">
+      <div class="mini-stat">
+        <span>Upcoming</span>
+        <strong>2</strong>
+      </div>
+      <div class="mini-stat">
+        <span>Doctor</span>
+        <strong>Dr. Santos</strong>
+      </div>
+      <div class="mini-stat">
+        <span>Status</span>
+        <strong>Stable</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="metric-grid">
+    <article class="metric-card">
+      <span>Upcoming Appointments</span>
+      <strong>2</strong>
+      <p>Your scheduled visits for the next few days.</p>
+    </article>
+    <article class="metric-card">
+      <span>Past Visits</span>
+      <strong>12</strong>
+      <p>Your completed consultations history.</p>
+    </article>
+    <article class="metric-card">
+      <span>Prescriptions</span>
+      <strong>4</strong>
+      <p>Active medications prescribed to you.</p>
+    </article>
+  </section>
+
+  <section class="panel notification-center">
+    <p class="eyebrow">Notifications</p>
+    <div class="notification-header">
+      <h3>Your alerts</h3>
+      <span class="notification-summary">1 unread</span>
+    </div>
+
+    <div class="notification-list">
+      <div class="notification-item unread">
+        <div class="notification-dot"></div>
+        <div>
+          <strong>Appointment confirmed.</strong>
+          <p>Your booking for tomorrow is confirmed.</p>
+        </div>
+        <span class="notification-time">5 min ago</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-grid">
+
+    <article class="panel">
+      <p class="eyebrow">Next Appointment</p>
+      <h3>Upcoming visit</h3>
+
+      <div>
+        <p><strong>Dr. Maria Santos</strong></p>
+        <p>April 15 • 10:30 AM</p>
+      </div>
+    </article>
+
+    <article class="panel">
+      <p class="eyebrow">Health Summary</p>
+      <h3>Current status</h3>
+
+      <div class="info-list">
+        <div class="list-item">
+          <strong>Condition</strong>
+          <small>Stable</small>
+          <p>No urgent medical issues detected.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <p class="eyebrow">Latest Booking</p>
+      <h3>Your request</h3>
+      <div data-latest-booking></div>
+    </article>
+
+  </section>
+
+</main>
+<script src="auth.js"></script>
+</body>
+</html>
