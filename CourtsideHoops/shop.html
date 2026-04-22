@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales</title>
+<link rel="stylesheet" href="../CourtsideHoops/css/style.css">
+
+<style>
+/* EXTRA STYLES FOR SALES PAGE */
+body{overflow-y:auto;}
+
+.container{display:flex;min-height:100vh;}
+
+/* SIDEBAR */
+.sidebar{
+  width:230px;
+  background:white;
+  border-right:1px solid #eee;
+  padding:20px;
+}
+
+.sidebar h3{margin-bottom:15px;font-size:14px;color:#777;}
+.sidebar .item{
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-bottom:8px;
+}
+.sidebar .item:hover{background:#f3f4f6;}
+.sidebar .active{background:#f3f4f6;font-weight:600;}
+
+/* MAIN */
+.main{flex:1;padding:25px;}
+
+/* ALERT */
+.alert{
+  background:#e0f2fe;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+/* STATS */
+.stats{
+  display:flex;
+  gap:15px;
+  margin-bottom:15px;
+}
+.stat{
+  flex:1;
+  background:white;
+  padding:15px;
+  border-radius:10px;
+}
+.stat h4{font-size:13px;color:#777;}
+.stat p{font-size:18px;font-weight:700;}
+
+/* ACCOUNT SECTION */
+.section{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+
+.rating{
+  background:#dcfce7;
+  color:#16a34a;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+.add-account{
+  height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px dashed #ddd;
+  border-radius:10px;
+  cursor:pointer;
+  color:#777;
+}
+
+/* RIGHT PANEL */
+.flex{
+  display:flex;
+  gap:20px;
+}
+
+.right-panel{
+  width:300px;
+}
+
+.card{
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+.btn{
+  display:block;
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#f97316;
+  color:white;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+/* === Dark Mode for Sales Page === */
+
+/* Body / main container */
+body.dark .main,
+body.dark .container {
+  background: #111;
+  color: #eee;
+}
+
+/* Sidebar */
+body.dark .sidebar {
+  background: #1a1a1a;
+  border-right: 1px solid #333;
+  color: #eee;
+}
+
+body.dark .sidebar h3 {
+  color: #ccc;
+}
+
+body.dark .sidebar .item {
+  background: #1a1a1a;
+  color: #eee;
+}
+
+body.dark .sidebar .item:hover,
+body.dark .sidebar .active {
+  background: #222;
+}
+
+/* Alerts */
+body.dark .alert {
+  background: #0c4a6e;
+  color: #fff;
+}
+
+/* Stats */
+body.dark .stat {
+  background: #1a1a1a;
+  color: #eee;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+}
+
+body.dark .stat h4 {
+  color: #ccc;
+}
+
+/* Sections */
+body.dark .section {
+  background: #1a1a1a;
+  color: #eee;
+}
+
+/* Rating */
+body.dark .rating {
+  background: #065f46; /* darker green */
+  color: #fff;
+}
+
+/* Add account panel */
+body.dark .add-account {
+  border: 2px dashed #444;
+  color: #ccc;
+  background: #1a1a1a;
+}
+
+/* Cards */
+body.dark .card {
+  background: #1a1a1a;
+  color: #eee;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+}
+
+/* Buttons */
+body.dark .btn {
+  background: #ef4444; /* match red buttons */
+  color: #fff;
+}
+
+body.dark .btn:hover {
+  background: #dc2626;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">🏀 COURTSIDE HOOPS</div>
+
+<ul class="nav-links">
+  <li><a href="market.html">Market</a></li>
+  <li><a href="item.html">Order History</a></li>
+  <li><a href="shop.html">Shop</a></li>
+  <li><a href="account.html">Account</a></li>
+  <li><a href="announcement.html">Announcement</a></li>
+  </ul>
+
+    <div class="nav-right">
+        <a onclick="openAuth()">Login</a>
+        <div class="cart" onclick="toggleCart()">🛒</div>
+        <button id="darkModeToggle">🌙</button>
+    </div>
+</nav>
+
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h3>Main</h3>
+    <div class="item">Purchased Items</div>
+    <div class="item">History</div>
+    <div class="item">Gift Cards</div>
+
+    <h3>For Sellers</h3>
+    <div class="item active">Linked Accounts</div>
+    <div class="item">Inventory</div>
+    <div class="item">Items on Sale</div>
+    <div class="item">Quick Sale</div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <div class="alert">
+      We recommend using a separate account for selling to avoid errors.
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat">
+        <h4>Total Income</h4>
+        <p>₱0.00</p>
+      </div>
+      <div class="stat">
+        <h4>Sales</h4>
+        <p>0</p>
+      </div>
+      <div class="stat">
+        <h4>Success Rate</h4>
+        <p>0%</p>
+      </div>
+    </div>
+
+    <div class="alert">
+      To sell items, link at least one account.
+    </div>
+
+    <div class="flex">
+
+      <!-- LEFT -->
+      <div style="flex:1;">
+        <div class="section">
+          <h3>Your Accounts</h3>
+          <div class="rating">Seller Rating: 70/100</div>
+          <p style="color:#777;margin-bottom:10px;">Link accounts to start selling.</p>
+
+          <div class="add-account">+ Add Account</div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="right-panel">
+        <div class="card">
+          <h4>Store Link</h4>
+          <p style="font-size:13px;color:#777;">Share your store easily.</p>
+          <input type="text" value="yourstore.link" style="width:100%;padding:8px;margin-top:10px;border:1px solid #ddd;border-radius:6px;">
+          <button class="btn">Edit</button>
+        </div>
+
+        <div class="card">
+          <h4>Share</h4>
+          <p style="font-size:13px;color:#777;">Share your store link.</p>
+          <button class="btn">Share Link →</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+
+<!-- CART SIDEBAR -->
+<div id="cartSidebar" class="cart-sidebar">
+  <h2>Shopping Cart</h2>
+
+  <div id="cartItems" class="cart-items">
+    <p class="empty-cart">Your cart is empty</p>
+  </div>
+
+  <div class="cart-footer">
+    <h3>Total: ₱<span id="cartTotal">0</span></h3>
+
+    <button class="checkout-btn" onclick="checkout()">Checkout All</button>
+    <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div id="authOverlay" class="auth-overlay" onclick="closeAuth()"></div>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="auth-modal">
+
+  <!-- LOGIN FORM -->
+  <div id="loginForm">
+    <h2>Login</h2>
+
+    <input type="text" id="loginUsername" placeholder="Username">
+    <input type="password" id="loginPassword" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p>Don't have an account?
+      <span onclick="showRegister()">Register</span>
+    </p>
+  </div>
+
+  <!-- REGISTER FORM -->
+  <div id="registerForm" style="display:none;">
+    <h2>Register</h2>
+
+    <input type="text" id="regUsername" placeholder="Username">
+    <input type="email" id="regEmail" placeholder="Email">
+    <input type="password" id="regPassword" placeholder="Password">
+
+    <button onclick="register()">Register</button>
+
+    <p>Already have an account?
+      <span onclick="showLogin()">Login</span>
+    </p>
+  </div>
+
+</div>
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- LEFT -->
+    <div class="footer-left">
+      <h3>COURTSIDE HOOPS</h3>
+      <p class="disclaimer">
+        Not affiliated, associated, or partnered with the NBA.
+      </p>
+      <p class="copyright">
+        © 2025–2026 All Rights Reserved
+      </p>
+    </div>
+
+    <!-- CENTER -->
+    <div class="footer-center">
+      <h4>Contact</h4>
+      <p>support@courtsidehoops.gg</p>
+      <p>Business hours: 09:00–18:00</p>
+
+      <div class="socials">
+        <div class="social">📷</div>
+        <div class="social">✈️</div>
+        <div class="social">▶️</div>
+        <div class="social">🎮</div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-right">
+      <h4>Legal</h4>
+      <div class="footer-links">
+        <div class="footer-btn">Terms of Service →</div>
+        <div class="footer-btn">Privacy Policy →</div>
+        <div class="footer-btn">AML KYC Policy →</div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script src="../CourtsideHoops/js/script.js"></script>
+
+</body>
+</html>

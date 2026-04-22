@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Courtside Hoops</title>
+  <link rel="stylesheet" href="../CourtsideHoops/css/style.css">
+  <link rel="stylesheet" href="../CourtsideHoops/css/ui.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">COURTSIDE HOOPS</div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="login.html" class="nav-link">Login</a>
+    <button id="darkModeToggle">🌙</button>
+    <a href="login.html"><div class="cart">🛒</div></a>
+  </div>
+</header>
+
+<main class="auth-page">
+
+  <div class="auth-card">
+
+    <h2 class="auth-title" id="titleText">Welcome Back</h2>
+
+    <form>
+
+      <div class="input-group" id="nameField" style="display:none;">
+        <label>Full Name</label>
+        <div class="input-box">
+          <input type="text" placeholder="John Doe">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <div class="input-box">
+          <input type="email" placeholder="your.email@example.com">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <div class="input-box">
+          <input type="password" placeholder="••••••••">
+        </div>
+      </div>
+
+      <div class="input-group" id="confirmField" style="display:none;">
+        <label>Confirm Password</label>
+        <div class="input-box">
+          <input type="password" placeholder="••••••••">
+        </div>
+      </div>
+
+      <div id="forgot" style="text-align:right; margin-bottom:15px;">
+        <a href="#" style="font-size:14px; color:#ef4444; text-decoration:none;">
+          Forgot Password?
+        </a>
+      </div>
+
+      <button class="auth-btn" type="button">
+        Login
+      </button>
+
+    </form>
+
+  <div class="auth-toggle">
+  <p id="toggleText">
+    Don't have an account?
+    <span onclick="toggleAuth()" id="toggleAction">Sign Up</span>
+  </p>
+</div>
+
+    <div style="margin-top:25px; border-top:1px solid #eee; padding-top:20px;">
+      <p style="text-align:center; font-size:13px; color:#999;">Or continue with</p>
+
+      <div class="social-grid">
+        <button class="social-btn">Google</button>
+        <button class="social-btn">Facebook</button>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+  </div>
+
+</main>
+
+<script>
+let isRegister = false;
+
+function toggleAuth() {
+  isRegister = !isRegister;
+
+  document.getElementById("nameField").style.display = isRegister ? "block" : "none";
+  document.getElementById("confirmField").style.display = isRegister ? "block" : "none";
+  document.getElementById("forgot").style.display = isRegister ? "none" : "block";
+
+  document.getElementById("titleText").innerText =
+    isRegister ? "Create Account" : "Welcome Back";
+
+  document.querySelector(".auth-btn").innerText =
+    isRegister ? "Create Account" : "Login";
+
+  document.getElementById("toggleText").innerHTML = isRegister
+    ? `Already have an account? <span onclick="toggleAuth()" style="color:#ef4444; cursor:pointer; font-weight:600;">Login</span>`
+    : `Don't have an account? <span onclick="toggleAuth()" style="color:#ef4444; cursor:pointer; font-weight:600;">Sign Up</span>`;
+}
+</script>
+
+<!-- DARK MODE (optional hook) -->
+<script src="../CourtsideHoops/js/script.js"></script>
+
+</body>
+</html>
