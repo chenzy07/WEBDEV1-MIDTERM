@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security | Courtside Hoops</title>
+
+<link rel="stylesheet" href="../CourtsideHoops/css/style.css">
+<link rel="stylesheet" href="../CourtsideHoops/css/ui.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">COURTSIDE HOOPS</div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<ul class="nav-links">
+  <li><a href="market.html">Market</a></li>
+  <li><a href="item.html">Order History</a></li>
+  <li><a href="shop.html">Shop</a></li>
+  <li><a href="announcement.html">Announcement</a></li>
+  </ul>
+
+<div class="nav-right">
+  <a href=".html" class="nav-btn">
+    Cart
+  </a>
+
+  <div class="profile-menu">
+    <button class="nav-btn profile-btn">
+      👤
+    </button>
+
+    <div class="dropdown">
+      <a href="account.html">My Account</a>
+      <button id="darkModeToggle" class="nav-btn">
+        Dark Mode
+      </button>
+      <button class="logout-button" data-logout>Log Out</button>
+    </div>
+  </div>
+
+</div>
+</header>
+
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="account-profile">
+      <img src="https://i.pravatar.cc/150?img=12" class="profile-pic">
+
+      <h3>Jacky Chen</h3>
+      <p class="muted">Security Settings</p>
+    </div>
+
+    <div class="sidebar-links">
+
+  <a class="sidebar-link active" href="#">
+    <span>🔐</span> Security
+  </a>
+
+  <a class="sidebar-link" href="#">
+    <span>👤</span> Profile
+  </a>
+
+  <a class="sidebar-link" href="#">
+    <span>📱</span> Devices
+  </a>
+
+</div>
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main security">
+
+    <div class="section-header">
+      <h2>Account Security</h2>
+      <p class="muted">Manage your password, authentication, and login activity</p>
+    </div>
+
+
+    <!-- PASSWORD CARD -->
+    <div class="security-card">
+      <h3>Change Password</h3>
+
+      <div class="form-group">
+        <label>Current Password</label>
+        <input type="password" placeholder="Enter current password">
+      </div>
+
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="password" placeholder="Enter new password">
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" placeholder="Confirm new password">
+      </div>
+
+      <button class="btn-primary">Update Password</button>
+    </div>
+
+
+    <!-- 2FA -->
+    <div class="security-card">
+      <div class="flex-row">
+        <div>
+          <h3>Two-Factor Authentication</h3>
+          <p class="muted">Add an extra layer of protection to your account</p>
+        </div>
+
+        <button class="btn-outline">Enable</button>
+      </div>
+    </div>
+
+
+    <!-- LOGIN ACTIVITY -->
+    <div class="security-card">
+      <h3>Login Activity</h3>
+
+      <div class="activity-list">
+        <div class="activity">
+          <span>📱 iPhone 13</span>
+          <small>Manila — Active now</small>
+        </div>
+
+        <div class="activity">
+          <span>💻 Windows PC</span>
+          <small>Makati — 1 day ago</small>
+        </div>
+
+        <div class="activity">
+          <span>📱 Android</span>
+          <small>Quezon City — 3 days ago</small>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- DANGER ZONE -->
+    <div class="security-card danger-box">
+      <h3>Danger Zone</h3>
+      <p class="muted">These actions are irreversible</p>
+
+      <button class="btn-danger">Delete Account</button>
+    </div>
+
+  </main>
+
+</div>
+
+</div>
+
+<script src="../CourtsideHoops/js/script.js"></script>
+<script src="../CourtsideHoops/js/auth.js"></script>
+
+</body>
+</html>
