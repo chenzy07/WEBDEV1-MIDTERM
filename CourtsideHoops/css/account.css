@@ -1,0 +1,155 @@
+#accountGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 15px;
+}
+
+/* ACCOUNT CARD */
+.account-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+
+  transition: 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.account-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* TOP HEADER INSIDE CARD */
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* ROLE CHIP */
+.role-chip {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* =========================
+   🔥 USE BUTTON (FIXED)
+========================= */
+.fill-button {
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* hover = filled style */
+.fill-button:hover {
+  background: var(--primary);
+  color: #fff;
+
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(239, 68, 68, 0.25);
+}
+
+/* click effect */
+.fill-button:active {
+  transform: scale(0.96);
+}
+
+/* subtle shine animation */
+.fill-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transform: skewX(-20deg);
+  transition: 0.4s;
+}
+
+.fill-button:hover::after {
+  left: 120%;
+}
+
+
+/* =========================
+   CREDENTIAL TEXT
+========================= */
+.credential-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 6px;
+  color: var(--text-muted);
+}
+
+.credential-line strong {
+  color: var(--text);
+}
+
+/* =========================
+   LOGIN PAGE SPACING FIX
+========================= */
+
+.auth-card {
+  padding-bottom: 25px;
+}
+
+#loginForm {
+  margin-bottom: 20px;
+}
+
+#accountGrid {
+  margin-top: 25px;
+}
+
+#currentSession {
+  margin-top: 20px;
+}
+
+#continueSession {
+  margin-top: 12px;
+}
+
+
+/* =========================
+   DARK MODE FIX
+========================= */
+body.dark .account-card {
+  background: var(--dark-surface);
+  border-color: var(--dark-border);
+}
+
+body.dark .fill-button {
+  border-color: var(--primary);
+  color: var(--primary-light);
+}
+
+body.dark .fill-button:hover {
+  color: #fff;
+}

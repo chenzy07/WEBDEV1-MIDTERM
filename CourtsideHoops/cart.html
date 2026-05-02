@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart | Courtside Hoops</title>
+<link rel="stylesheet" href="../CourtsideHoops/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* Additional cart-specific styles */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Cart Grid Layout */
+.cart-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Cart Item Card */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.cart-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-details h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.cart-item-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.cart-item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.remove-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: white;
+}
+
+/* Quantity selector */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg);
+  padding: 6px 12px;
+  border-radius: 30px;
+}
+
+.quantity-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.quantity-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.quantity-value {
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Cart Summary */
+.cart-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row.total {
+  border-bottom: none;
+  padding-top: 16px;
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.summary-row.total .amount {
+  color: var(--primary);
+  font-size: 24px;
+}
+
+.summary-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.checkout-btn, .clear-btn {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checkout-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+}
+
+.clear-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.clear-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+}
+
+/* Empty Cart */
+.empty-cart {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.empty-cart i {
+  font-size: 64px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.empty-cart h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.empty-cart p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.shop-now-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  padding: 12px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.shop-now-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+}
+
+/* Checkout Modal */
+.auth-modal {
+  width: 450px;
+  max-width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.payment-options {
+  display: flex;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.pay-btn {
+  flex: 1;
+  padding: 14px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.pay-btn:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.payment-section {
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--bg);
+  border-radius: 12px;
+  text-align: center;
+}
+
+#qr-section canvas {
+  margin: 16px auto;
+  display: block;
+  border-radius: 12px;
+  padding: 16px;
+  background: white;
+}
+
+#qr-section h4 {
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.card-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.card-row {
+  display: flex;
+  gap: 12px;
+}
+
+.card-row input {
+  flex: 1;
+}
+
+.pay-now-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+/* Cart badge in navbar */
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.nav-btn {
+  position: relative;
+}
+
+/* Dark mode adjustments */
+body.dark .cart-item {
+  background: #1a1a1a;
+}
+
+body.dark .quantity-selector {
+  background: #2a2a2a;
+}
+
+body.dark .quantity-btn {
+  background: #333;
+  color: #eee;
+}
+
+body.dark .payment-section {
+  background: #1a1a1a;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cart-item-actions {
+    align-items: center;
+    width: 100%;
+  }
+  
+  .summary-actions {
+    flex-direction: column;
+  }
+  
+  .payment-options {
+    flex-direction: column;
+  }
+  
+  .auth-modal {
+    width: 95%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">
+ <img src="../CourtsideHoops/images/logo.png" alt="Logo" class="logo-icon">
+  COURTSIDE HOOPS
+</div>
+
+  <ul class="nav-links">
+    <li>
+      <a href="market.html">
+        <i class="fas fa-store"></i>
+        <span>Market</span>
+      </a>
+    </li>
+    <li>
+      <a href="item.html">
+        <i class="fas fa-clock-rotate-left"></i>
+        <span>History</span>
+      </a>
+    </li>
+    <li>
+      <a href="shop.html">
+        <i class="fas fa-basket-shopping"></i>
+        <span>Shop</span>
+      </a>
+    </li>
+    <li>
+      <a href="announcement.html">
+        <i class="fas fa-bullhorn"></i>
+        <span>News</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="cart.html" class="nav-btn">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="tooltip">Cart</span>
+      <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+    </a>
+
+    <div class="profile-menu">
+      <button class="nav-btn profile-btn">
+        <i class="fas fa-user"></i>
+        <span class="tooltip">Profile</span>
+      </button>
+
+      <div class="dropdown">
+        <a href="account.html">
+          <i class="fas fa-id-card"></i> My Account
+        </a>
+        <button id="darkModeToggle">
+          <i id="darkIcon" class="fas fa-moon"></i>
+        </button>
+        <button class="logout-button" data-logout>
+          <i class="fas fa-right-from-bracket"></i> Log Out
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+  <main class="main">
+    <div class="section-header">
+      <h2>Shopping Cart</h2>
+      <p class="muted">Review and manage your items before checkout</p>
+    </div>
+
+    <div id="cart-container"></div>
+  </main>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="overlay" class="auth-overlay"></div>
+
+<div id="checkout" class="auth-modal">
+  <h2>Checkout</h2>
+  <p>Select your preferred payment method</p>
+
+  <div class="payment-options">
+    <button onclick="selectPayment('gcash')" class="pay-btn">
+      GCash / QR Code
+    </button>
+    <button onclick="selectPayment('card')" class="pay-btn">
+      Credit / Debit Card
+    </button>
+  </div>
+
+  <div id="qr-section" class="payment-section"></div>
+
+  <div id="card-section" class="payment-section">
+    <div class="card-form">
+      <input type="text" placeholder="Card Number">
+      <input type="text" placeholder="Card Holder Name">
+      <div class="card-row">
+        <input type="text" placeholder="MM/YY">
+        <input type="text" placeholder="CVV">
+      </div>
+      <button class="pay-now-btn" onclick="processPayment()">Pay Now</button>
+    </div>
+  </div>
+
+  <button onclick="closeCheckout()" class="clear-btn" style="margin-top: 20px;">Close</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="../CourtsideHoops/js/script.js"></script>
+<script src="../CourtsideHoops/js/auth.js"></script>
+<script src="../CourtsideHoops/js/cart.js"></script>
+<script src="../CourtsideHoops/js/checkout.js"></script>
+
+</body>
+</html>

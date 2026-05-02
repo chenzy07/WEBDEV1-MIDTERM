@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Announcement | Courtside Hoops</title>
+<link rel="stylesheet" href="../CourtsideHoops/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* PAGE */
+.main{max-width:1100px;margin:auto;padding:30px 20px;}
+
+/* HERO */
+.hero{
+  text-align:center;
+  margin-bottom:30px;
+}
+.hero h1{margin-bottom:8px;}
+.hero p{color:#777;margin-bottom:15px;}
+
+.search{
+  width:100%;
+  max-width:500px;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:10px;
+}
+
+/* CATEGORIES */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.cat-card{
+  background:white;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+  cursor:pointer;
+}
+
+.cat-card:hover{transform:translateY(-3px);}
+
+/* POPULAR */
+.section-title{margin:20px 0 10px;}
+
+.questions{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
+
+.q-card{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+.q-card p{color:#777;font-size:13px;}
+
+/* FILTER TABS */
+.tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:15px;
+}
+
+.tab{
+  padding:8px 15px;
+  border-radius:20px;
+  background:#f3f4f6;
+  cursor:pointer;
+}
+
+.tab.active{background:#111;color:white;}
+
+/* FAQ LIST */
+.faq{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:15px;
+}
+
+.faq-card{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+.faq-card small{
+  display:inline-block;
+  margin-top:8px;
+  background:#e5e7eb;
+  padding:4px 8px;
+  border-radius:6px;
+}
+
+/* === Dark Mode for Hero, Categories, FAQ, and Q&A === */
+
+/* Main page area */
+body.dark .main {
+  background: #111;
+  color: #eee;
+}
+
+/* Hero section */
+body.dark .hero p {
+  color: #ccc;
+}
+body.dark .hero h1 {
+  color: #fff;
+}
+
+/* Search input */
+body.dark .search {
+  background: #222;
+  color: #eee;
+  border: 1px solid #444;
+}
+
+/* Category cards */
+body.dark .cat-card {
+  background: #1a1a1a;
+  color: #eee;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+}
+body.dark .cat-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Questions / Popular cards */
+body.dark .q-card {
+  background: #1a1a1a;
+  color: #eee;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+}
+body.dark .q-card p {
+  color: #ccc;
+}
+
+/* Tabs / filters */
+body.dark .tab {
+  background: #222;
+  color: #eee;
+}
+body.dark .tab.active {
+  background: #6c6c6c; /* highlight active tab red to match site */
+  color: #fff;
+}
+
+/* FAQ cards */
+body.dark .faq-card {
+  background: #1a1a1a;
+  color: #eee;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+}
+
+/* FAQ small labels */
+body.dark .faq-card small {
+  background: #222;
+  color: #eee;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">
+ <img src="../CourtsideHoops/images/logo.png" alt="Logo" class="logo-icon">
+  COURTSIDE HOOPS
+</div>
+
+  <ul class="nav-links">
+    <li>
+      <a href="market.html">
+        <i class="fas fa-store"></i>
+        <span>Market</span>
+      </a>
+    </li>
+    <li>
+      <a href="item.html">
+        <i class="fas fa-clock-rotate-left"></i>
+        <span>History</span>
+      </a>
+    </li>
+    <li>
+      <a href="shop.html">
+        <i class="fas fa-basket-shopping"></i>
+        <span>Shop</span>
+      </a>
+    </li>
+    <li>
+      <a href="announcement.html">
+        <i class="fas fa-bullhorn"></i>
+        <span>News</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="nav-right">
+
+    <!-- Cart -->
+    <a href="cart.html" class="nav-btn">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="tooltip">Cart</span>
+    </a>
+
+    <!-- Profile -->
+   <div class="profile-menu">
+      <button class="nav-btn profile-btn">
+        <i class="fas fa-user"></i>
+        <span class="tooltip">Profile</span>
+      </button>
+
+      <div class="dropdown">
+        <a href="account.html">
+          <i class="fas fa-id-card"></i> My Account
+        </a>
+
+        <button id="darkModeToggle">
+        <i id="darkIcon" class="fas fa-moon"></i>
+        </button>
+
+        <button class="logout-button" data-logout>
+          <i class="fas fa-right-from-bracket"></i> Log Out
+        </button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Help & Announcements</h1>
+    <p>Find answers about buying, selling, and using the platform</p>
+    <input class="search" placeholder="Search questions...">
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="categories">
+    <div class="cat-card">Buying Cards<br><small>How to purchase items</small></div>
+    <div class="cat-card">Selling Cards<br><small>How to list items</small></div>
+    <div class="cat-card">Payments<br><small>Top-up & checkout</small></div>
+    <div class="cat-card">General Help<br><small>Account & issues</small></div>
+  </div>
+
+  <!-- POPULAR -->
+  <h3 class="section-title">Popular Questions</h3>
+  <div class="questions">
+    <div class="q-card">How to buy a card?<p>Go to market and add to cart</p></div>
+    <div class="q-card">How to sell a card?<p>Use the sales page</p></div>
+    <div class="q-card">How to withdraw funds?<p>Check your wallet settings</p></div>
+    <div class="q-card">Why is my order pending?<p>Processing time may vary</p></div>
+  </div>
+
+  <!-- FILTER -->
+  <h3 class="section-title">General Questions</h3>
+  <div class="tabs">
+    <div class="tab active">All</div>
+    <div class="tab">Buying</div>
+    <div class="tab">Selling</div>
+    <div class="tab">Payments</div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <div class="faq-card">
+      <strong>How do I register?</strong>
+      <p>Create an account using email or social login.</p>
+      <small>Account</small>
+    </div>
+
+    <div class="faq-card">
+      <strong>How do I add balance?</strong>
+      <p>Use the top-up option in your account.</p>
+      <small>Payments</small>
+    </div>
+
+    <div class="faq-card">
+      <strong>How do I list a card?</strong>
+      <p>Go to sales page and add your item.</p>
+      <small>Selling</small>
+    </div>
+
+    <div class="faq-card">
+      <strong>How do I receive my purchase?</strong>
+      <p>Items appear in your items page after checkout.</p>
+      <small>Buying</small>
+    </div>
+  </div>
+
+</div>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+
+<!-- CART SIDEBAR -->
+<div id="cartSidebar" class="cart-sidebar">
+  <h2>Shopping Cart</h2>
+
+  <div id="cartItems" class="cart-items">
+    <p class="empty-cart">Your cart is empty</p>
+  </div>
+
+  <div class="cart-footer">
+    <h3>Total: ₱<span id="cartTotal">0</span></h3>
+
+    <button class="checkout-btn" onclick="checkout()">Checkout All</button>
+    <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
+
+    <!-- OVERLAY -->
+<div id="authOverlay" class="auth-overlay" onclick="closeAuth()"></div>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="auth-modal">
+
+  <!-- LOGIN FORM -->
+  <div id="loginForm">
+    <h2>Login</h2>
+
+    <input type="text" id="loginUsername" placeholder="Username">
+    <input type="password" id="loginPassword" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p>Don't have an account?
+      <span onclick="showRegister()">Register</span>
+    </p>
+  </div>
+
+  <!-- REGISTER FORM -->
+  <div id="registerForm" style="display:none;">
+    <h2>Register</h2>
+
+    <input type="text" id="regUsername" placeholder="Username">
+    <input type="email" id="regEmail" placeholder="Email">
+    <input type="password" id="regPassword" placeholder="Password">
+
+    <button onclick="register()">Register</button>
+
+    <p>Already have an account?
+      <span onclick="showLogin()">Login</span>
+    </p>
+  </div>
+
+  </div>
+
+    <footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- LEFT -->
+    <div class="footer-left">
+      <h3>COURTSIDE HOOPS</h3>
+      <p class="disclaimer">
+        Not affiliated, associated, or partnered with the NBA.
+      </p>
+      <p class="copyright">
+        © 2025–2026 All Rights Reserved
+      </p>
+    </div>
+
+    <!-- CENTER -->
+    <div class="footer-center">
+      <h4>Contact</h4>
+      <p>support@courtsidehoops.gg</p>
+      <p>Business hours: 09:00–18:00</p>
+
+      <div class="socials">
+        <div class="social">📷</div>
+        <div class="social">✈️</div>
+        <div class="social">▶️</div>
+        <div class="social">🎮</div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-right">
+      <h4>Legal</h4>
+      <div class="footer-links">
+        <div class="footer-btn">Terms of Service →</div>
+        <div class="footer-btn">Privacy Policy →</div>
+        <div class="footer-btn">AML KYC Policy →</div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script src="../CourtsideHoops/js/script.js"></script>
+<script src="../CourtsideHoops/js/auth.js"></script>
+
+
+</body>
+</html>

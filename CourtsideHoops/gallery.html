@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gallery | Courtside Hoops</title>
+<link rel="stylesheet" href="../CourtsideHoops/css/style.css">
+<link rel="stylesheet" href="../CourtsideHoops/css/ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">
+ <img src="../CourtsideHoops/images/logo.png" alt="Logo" class="logo-icon">
+  COURTSIDE HOOPS
+</div>
+
+<ul class="nav-links">
+  <li>
+    <a href="index.html">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="gallery.html">
+      <i class="fas fa-images"></i>
+      <span>Gallery</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fas fa-users"></i>
+      <span>About Us</span>
+    </a>
+  </li>
+  <li>
+    <a href="contact.html">
+      <i class="fas fa-envelope"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+</ul>
+
+<div class="nav-right">
+
+  <a href="login.html" class="nav-btn">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="tooltip">Cart</span>
+  </a>
+
+ <a href="login.html" class="nav-btn nav-login">
+  <i class="fas fa-user"></i>
+  <span class="tooltip">Profile</span>
+</a>
+</div>
+</header>
+
+
+<div class="page">
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+<h3>Filters</h3>
+
+<div class="filter">
+<p>Select Cards</p>
+<button class="game-btn">NBA</button>
+</div>
+
+<div class="filter">
+<p>Price</p>
+<input type="text" placeholder="$ 0.00">
+<input type="text" placeholder="$ ∞">
+</div>
+
+<div class="filter">
+<p>Rarity</p>
+
+<div class="rarity">
+<div class="r legendary"></div>
+<div class="r epic"></div>
+<div class="r rare"></div>
+<div class="r common"></div>
+</div>
+
+</div>
+
+<div class="sidebar-footer">
+
+<div class="socials">
+<div class="social">📷</div>
+<div class="social">✈️</div>
+<div class="social">▶️</div>
+<div class="social">🎮</div>
+</div>
+
+<p class="disclaimer">
+COURTSIDE HOOPS is not affiliated, associated, or partnered with National Basketball Association.
+</p>
+
+<p class="copyright">
+© 2025–2026 COURTSIDE HOOPS All Rights Reserved
+</p>
+
+<div class="contact">
+<p>support@courtsidehoops.gg</p>
+<p>Business hours: 09:00–18:00</p>
+</div>
+
+<div class="sidebar-links">
+<div class="sidebar-btn">Terms of Service →</div>
+<div class="sidebar-btn">Privacy Policy →</div>
+<div class="sidebar-btn">AML KYC Policy →</div>
+</div>
+
+</div>
+
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<!-- BANNER -->
+<div class="banner">
+<h2>NEW NBA CARD?</h2>
+<p>You will never lose anything with CourtsideHoops</p>
+</div>
+
+<br>
+
+
+<!-- CATEGORY BUTTONS -->
+<div class="categories">
+<button>Superstars  </button>
+<button>Hall of Famers</button>
+<button>MVP Winner</button>
+<button>Teams</button>
+<button>Underrated Players</button>
+<button>Rising Stars</button>
+<button>Rookie</button>
+</div>
+
+
+<!-- SEARCH -->
+<div class="search-bar">
+<input type="text" id="search" placeholder="Quick search">
+</div>
+
+
+<!-- ITEMS -->
+<div class="items" id="items">
+
+<div class="card"
+     data-name="LeBron James"
+     data-price="$1200"
+     data-rarity="Legendary"
+     data-img="../CourtsideHoops/images/lebron.png">
+
+  <img src="../CourtsideHoops/images/lebron.png">
+  <h4>LeBron James</h4>
+  <p>$1200</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Steph Curry"
+     data-price="$800"
+     data-rarity="Epic"
+     data-img="../CourtsideHoops/images/curry.png">
+
+  <img src="../CourtsideHoops/images/curry.png">
+  <h4>Steph Curry</h4>
+  <p>$800</p>
+
+  <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Kevin Durant"
+     data-price="$1020"
+     data-rarity="Legendary"
+     data-img="../CourtsideHoops/images/durant.png">
+
+  <img src="../CourtsideHoops/images/durant.png">
+  <h4>Kevin Durant</h4>
+  <p>$1020</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Luka Doncic"
+     data-price="$500"
+     data-rarity="Rare"
+     data-img="../CourtsideHoops/images/luka.png">
+
+  <img src="../CourtsideHoops/images/luka.png">
+  <h4>Luka Doncic</h4>
+  <p>$500</p>
+
+  <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Austin Reaves"
+     data-price="$200"
+     data-rarity="Common"
+     data-img="../CourtsideHoops/images/reaves.png">
+
+  <img src="../CourtsideHoops/images/reaves.png">
+  <h4>Austin Reaves</h4>
+  <p>$200</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="SGA"
+     data-price="$2000"
+     data-rarity="Legendary"
+     data-img="../CourtsideHoops/images/shai.png">
+
+  <img src="../CourtsideHoops/images/shai.png">
+  <h4>Shai Alexander</h4>
+  <p>$2000</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Nikola Jokic"
+     data-price="$2500"
+     data-rarity="Legendary"
+     data-img="../CourtsideHoops/images/jokic.png">
+
+  <img src="../CourtsideHoops/images/jokic.png">
+  <h4>Nikola Jokic</h4>
+  <p>$2500</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Jayson Tatum"
+     data-price="$750"
+     data-rarity="Epic"
+     data-img="../CourtsideHoops/images/jisontitum.png">
+
+  <img src="../CourtsideHoops/images/jisontitum.png">
+  <h4>Jayson Tatum</h4>
+  <p>$750</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Giannis Antetokounmpo"
+     data-price="$550"
+     data-rarity="Rare"
+     data-img="../CourtsideHoops/images/giannis.png">
+
+  <img src="../CourtsideHoops/images/giannis.png">
+  <h4>Giannis</h4>
+  <p>$550</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Cooper Flagg"
+     data-price="$350"
+     data-rarity="Common"
+     data-img="../CourtsideHoops/images/cooper.png">
+
+  <img src="../CourtsideHoops/images/cooper.png">
+  <h4>Cooper Flagg</h4>
+  <p>$350</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Kawhi Leonard"
+     data-price="$320"
+     data-rarity="Common"
+     data-img="../CourtsideHoops/images/kawhi.png">
+
+  <img src="../CourtsideHoops/images/kawhi.png">
+  <h4>Khawi Leonard</h4>
+  <p>$320</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Klay Thompson"
+     data-price="$650"
+     data-rarity="Rare"
+     data-img="../CourtsideHoops/images/klay.png">
+
+  <img src="../CourtsideHoops/images/klay.png">
+  <h4>Klay Thompson</h4>
+  <p>$650</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Kyrie Irving"
+     data-price="$950"
+     data-rarity="Epic"
+     data-img="../CourtsideHoops/images/irving.png">
+
+  <img src="../CourtsideHoops/images/irving.png">
+  <h4>Kyrie Irving</h4>
+  <p>$950</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+<div class="card"
+     data-name="Anthony Davis"
+     data-price="$450"
+     data-rarity="Rare"
+     data-img="../CourtsideHoops/images/ad.png">
+
+  <img src="../CourtsideHoops/images/ad.png">
+  <h4>Anthony Davis</h4>
+  <p>$450</p>
+
+   <a href="login.html">
+    <button class="add-btn">Add to Cart</button>
+  </a>
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal-card">
+
+    <button class="modal-close" id="modalClose">✕</button>
+
+    <div class="modal-content">
+      <div class="modal-image">
+        <img id="modalImg">
+      </div>
+
+      <div class="modal-details">
+        <h2 id="modalName"></h2>
+
+        <span class="rarity-tag" id="modalRarity"></span>
+
+        <p class="modal-desc">
+          Premium NBA collectible card. Limited supply, high demand.
+        </p>
+
+        <div class="modal-bottom">
+          <h3 id="modalPrice"></h3>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="../CourtsideHoops/js/script.js"></script>
+<script src="../CourtsideHoops/js/modal.js"></script>
+
+</body>
+</html>

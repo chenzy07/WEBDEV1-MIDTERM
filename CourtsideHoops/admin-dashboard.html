@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel | Courtside Hoops</title>
+<link rel="stylesheet" href="../CourtsideHoops/css/style.css">
+<link rel="stylesheet" href="../CourtsideHoops/css/ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ===== LAYOUT FIX ===== */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* MAIN CONTENT AREA */
+.content {
+  flex: 1;
+  display: flex;
+}
+
+/* MAIN */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 30px;
+}
+
+/* SECTION TOGGLE */
+.item-section {
+  display: none;
+}
+.item-section.active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card h4 {
+  font-size: 13px;
+  color: #777;
+}
+.stat-card p {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* PRODUCT TABLE + DELIVERY TABLE + USER TABLE */
+.product-table-container,
+.delivery-table-container,
+.user-table-container,
+.announcement-table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 14px 16px;
+  background: rgba(239, 68, 68, 0.08);
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.admin-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  color: var(--text);
+}
+
+.admin-table tr:hover {
+  background: rgba(239, 68, 68, 0.03);
+}
+
+.badge-stock {
+  background: #22c55e20;
+  color: #15803d;
+  padding: 4px 10px;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+body.dark .badge-stock {
+  background: #22c55e30;
+  color: #86efac;
+}
+
+/* Status badges for delivery */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-block;
+}
+.status-processing { background: #f9731620; color: #c2410c; }
+.status-shipped { background: #3b82f620; color: #1d4ed8; }
+.status-delivered { background: #22c55e20; color: #15803d; }
+.status-pending { background: #6b728020; color: #4b5563; }
+
+/* User role badges */
+.role-badge {
+  padding: 4px 10px;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.role-admin { background: #ef444420; color: #dc2626; }
+.role-manager { background: #8b5cf620; color: #6d28d9; }
+.role-customer { background: #3b82f620; color: #1d4ed8; }
+
+/* Announcement status badges */
+.status-published { background: #22c55e20; color: #15803d; }
+.status-draft { background: #6b728020; color: #4b5563; }
+
+/* Banned user row styling */
+.user-row-banned {
+  opacity: 0.6;
+  background: rgba(0,0,0,0.03);
+}
+body.dark .user-row-banned {
+  background: rgba(255,255,255,0.03);
+}
+
+.action-icons i {
+  margin: 0 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.2s;
+  color: var(--text-muted);
+}
+
+.action-icons i:hover {
+  color: var(--primary, #ef4444);
+  transform: scale(1.1);
+}
+
+.add-product-btn, .add-user-btn, .add-announcement-btn {
+  background: var(--primary, #ef4444);
+  border: none;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 40px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-product-btn:hover, .add-user-btn:hover, .add-announcement-btn:hover {
+  background: var(--primary-dark, #dc2626);
+  transform: translateY(-1px);
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Search Bar Styles */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  padding: 6px 16px;
+  transition: 0.2s;
+}
+
+.search-bar-container:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+.search-bar-container i {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.search-bar-container input {
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  font-size: 0.85rem;
+  width: 220px;
+  outline: none;
+  color: var(--text);
+}
+
+.search-bar-container input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-bar-container input:focus {
+  outline: none;
+}
+
+.search-clear {
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: 0.2s;
+}
+
+.search-clear:hover {
+  color: var(--primary);
+}
+
+/* Announcement special styles */
+.announcement-preview {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* FOOTER FIX */
+.footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+body.dark .sidebar {
+  background: #111;
+  border-right: 1px solid #333;
+}
+
+body.dark .main {
+  background: #111;
+  color: #eee;
+}
+
+body.dark .sidebar-link {
+  color: #eee;
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: 16px;
+  width: 420px;
+  max-width: 90%;
+}
+
+.modal-content h3 {
+  margin-bottom: 16px;
+}
+
+.modal-content input, .modal-content select, .modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+}
+
+.modal-content textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.modal-buttons button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background: #6b7280;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background: var(--primary, #ef4444);
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+<header class="navbar">
+  <div class="logo">
+ <img src="../CourtsideHoops/images/logo.png" alt="Logo" class="logo-icon">
+  COURTSIDE HOOPS
+</div>
+  <div class="nav-right">
+    <div class="profile-menu">
+      <button class="nav-btn profile-btn">
+        <i class="fas fa-user"></i>
+        <span class="tooltip">Profile</span>
+      </button>
+      <div class="dropdown">
+        <a href="admin-account.html"><i class="fas fa-id-card"></i> Account</a>
+        <button id="darkModeToggle">
+        <i id="darkIcon" class="fas fa-moon"></i>
+        </button>
+        <button class="logout-button" data-logout><i class="fas fa-right-from-bracket"></i> Log Out</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-links">
+      <h3 class="sidebar-title">Admin Dashboard</h3>
+      <a class="sidebar-link active" href="javascript:void(0)" onclick="showSection('product-section', this)">
+        <i class="fas fa-box"></i>
+        <span>Product Management</span>
+      </a>
+      <a class="sidebar-link" href="javascript:void(0)" onclick="showSection('delivery-section', this)">
+        <i class="fas fa-truck"></i>
+        <span>Delivery Status</span>
+      </a>
+      <h3 class="sidebar-title">Admin Tools</h3>
+      <a class="sidebar-link" href="javascript:void(0)" onclick="showSection('user-section', this)">
+        <i class="fas fa-users"></i>
+        <span>User Management</span>
+      </a>
+      <a class="sidebar-link" href="javascript:void(0)" onclick="showSection('announcement-section', this)">
+          <i class="fas fa-user-shield"></i>
+          <span>Create Admin User</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- PRODUCT MANAGEMENT SECTION -->
+    <div id="product-section" class="item-section active">
+      <div class="flex-between">
+        <h2><i class="fas fa-boxes"></i> Product Management</h2>
+        <div style="display: flex; gap: 12px;">
+          <div class="search-bar-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="productSearchInput" placeholder="Search products..." onkeyup="filterProducts()">
+            <i class="fas fa-times-circle search-clear" onclick="clearProductSearch()" style="cursor: pointer;"></i>
+          </div>
+          <button class="add-product-btn" id="addProductBtn"><i class="fas fa-plus"></i> Add Product</button>
+        </div>
+      </div>
+      <div class="product-table-container">
+        <table class="admin-table">
+          <thead><tr><th>Product Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Action</th></tr></thead>
+          <tbody id="productTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DELIVERY STATUS SECTION -->
+    <div id="delivery-section" class="item-section">
+      <div class="flex-between">
+        <h2><i class="fas fa-truck"></i> Delivery Status</h2>
+        <div style="display: flex; gap: 12px;">
+          <div class="search-bar-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="deliverySearchInput" placeholder="Search orders..." onkeyup="filterDeliveries()">
+            <i class="fas fa-times-circle search-clear" onclick="clearDeliverySearch()" style="cursor: pointer;"></i>
+          </div>
+          <button class="add-product-btn" id="addDeliveryBtn" style="background:#3b82f6;"><i class="fas fa-plus"></i> Add Order</button>
+        </div>
+      </div>
+      <div class="stats" id="deliveryStats"></div>
+      <div class="delivery-table-container">
+        <table class="admin-table">
+          <thead><tr><th>Order ID</th><th>Customer Name</th><th>Product</th><th>Order Date</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="deliveryTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- USER MANAGEMENT SECTION -->
+    <div id="user-section" class="item-section">
+      <div class="flex-between">
+        <h2><i class="fas fa-users"></i> User Management</h2>
+        <div style="display: flex; gap: 12px;">
+          <div class="search-bar-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="userSearchInput" placeholder="Search users..." onkeyup="filterUsers()">
+            <i class="fas fa-times-circle search-clear" onclick="clearUserSearch()" style="cursor: pointer;"></i>
+          </div>
+          <button class="add-user-btn" id="addUserBtn"><i class="fas fa-user-plus"></i> Add User</button>
+        </div>
+      </div>
+      <div class="stats" id="userStats"></div>
+      <div class="user-table-container">
+        <table class="admin-table">
+          <thead><tr><th>User ID</th><th>Username</th><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="userTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ANNOUNCEMENT MANAGEMENT SECTION -->
+    <div id="announcement-section" class="item-section">
+      <div class="flex-between">
+        <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
+        <div style="display: flex; gap: 12px;">
+          <div class="search-bar-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="announcementSearchInput" placeholder="Search announcements..." onkeyup="filterAnnouncements()">
+            <i class="fas fa-times-circle search-clear" onclick="clearAnnouncementSearch()" style="cursor: pointer;"></i>
+          </div>
+          <button class="add-announcement-btn" id="addAnnouncementBtn"><i class="fas fa-plus"></i> Create Announcement</button>
+        </div>
+      </div>
+      <div class="stats" id="announcementStats"></div>
+      <div class="announcement-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Content</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="announcementTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <h3>COURTSIDE HOOPS</h3>
+      <p class="disclaimer">Not affiliated, associated, or partnered with the NBA.</p>
+      <p class="copyright">© 2025–2026 All Rights Reserved</p>
+    </div>
+    <div class="footer-center">
+      <h4>Contact</h4>
+      <p>support@courtsidehoops.gg</p>
+      <p>Business hours: 09:00–18:00</p>
+      <div class="socials"><div class="social">📷</div><div class="social">✈️</div><div class="social">▶️</div><div class="social">🎮</div></div>
+    </div>
+    <div class="footer-right">
+      <h4>Legal</h4>
+      <div class="footer-links"><div class="footer-btn">Terms of Service →</div><div class="footer-btn">Privacy Policy →</div><div class="footer-btn">AML KYC Policy →</div></div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<!-- Modal for Product -->
+<div id="productModal" class="modal-overlay">
+  <div class="modal-content">
+    <h3 id="modalTitle">Add Product</h3>
+    <input type="text" id="productName" placeholder="Product Name">
+    <input type="text" id="productCategory" placeholder="Category">
+    <input type="number" id="productPrice" placeholder="Price">
+    <input type="number" id="productStock" placeholder="Stock">
+    <div class="modal-buttons"><button id="cancelProductBtn">Cancel</button><button id="saveProductBtn">Save</button></div>
+  </div>
+</div>
+
+<!-- Modal for Delivery -->
+<div id="deliveryModal" class="modal-overlay">
+  <div class="modal-content">
+    <h3 id="deliveryModalTitle">Add Order</h3>
+    <input type="text" id="deliveryCustomer" placeholder="Customer Name">
+    <input type="text" id="deliveryProduct" placeholder="Product Name">
+    <input type="date" id="deliveryDate">
+    <select id="deliveryStatusSelect"><option value="Processing">Processing</option><option value="Shipped">Shipped</option><option value="Delivered">Delivered</option><option value="Pending">Pending</option></select>
+    <div class="modal-buttons"><button id="cancelDeliveryBtn">Cancel</button><button id="saveDeliveryBtn">Save</button></div>
+  </div>
+</div>
+
+<!-- Modal for User -->
+<div id="userModal" class="modal-overlay">
+  <div class="modal-content">
+    <h3 id="userModalTitle">Add User</h3>
+    <input type="text" id="userName" placeholder="Username">
+    <input type="email" id="userEmail" placeholder="Email">
+    <select id="userRoleSelect"><option value="customer">Customer</option><option value="admin">Admin</option><option value="manager">Manager</option></select>
+    <div class="modal-buttons"><button id="cancelUserBtn">Cancel</button><button id="saveUserBtn">Save</button></div>
+  </div>
+</div>
+
+<!-- Modal for Announcement -->
+<div id="announcementModal" class="modal-overlay">
+  <div class="modal-content">
+    <h3 id="announcementModalTitle">Create Announcement</h3>
+    <input type="text" id="announcementTitle" placeholder="Announcement Title">
+    <textarea id="announcementContent" placeholder="Announcement content..."></textarea>
+    <select id="announcementStatus">
+      <option value="Published">Published</option>
+      <option value="Draft">Draft</option>
+    </select>
+    <div class="modal-buttons"><button id="cancelAnnouncementBtn">Cancel</button><button id="saveAnnouncementBtn">Save</button></div>
+  </div>
+</div>
+
+<script src="../CourtsideHoops/js/admin.js"></script>
+<script src="../CourtsideHoops/js/script.js"></script>
+<script src="../CourtsideHoops/js/auth.js"></script>
+
+</body>
+</html>

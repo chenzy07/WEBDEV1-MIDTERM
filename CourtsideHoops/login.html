@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Courtside Hoops</title>
+  <link rel="stylesheet" href="../CourtsideHoops/css/style.css">
+  <link rel="stylesheet" href="../CourtsideHoops/css/ui.css">
+  <link rel="stylesheet" href="../CourtsideHoops/css/account.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body data-page="login">
+
+<header class="navbar">
+  <div class="logo">
+ <img src="../CourtsideHoops/images/logo.png" alt="Logo" class="logo-icon">
+  COURTSIDE HOOPS
+</div>
+
+<ul class="nav-links">
+  <li>
+    <a href="index.html">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="gallery.html">
+      <i class="fas fa-images"></i>
+      <span>Gallery</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fas fa-users"></i>
+      <span>About Us</span>
+    </a>
+  </li>
+  <li>
+    <a href="contact.html">
+      <i class="fas fa-envelope"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+</ul>
+
+<div class="nav-right">
+
+  <a href="login.html" class="nav-btn">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="tooltip">Cart</span>
+  </a>
+
+ <a href="login.html" class="nav-btn nav-login">
+  <i class="fas fa-user"></i>
+  <span class="tooltip">Profile</span>
+</a>
+</div>
+</header>
+
+<main class="auth-page">
+
+  <div class="auth-card">
+
+    <h2 class="auth-title" id="titleText">Welcome Back</h2>
+
+ <form id="loginForm">
+
+  <div class="input-group" id="nameField" style="display:none;">
+    <label>Full Name</label>
+    <div class="input-box">
+      <input type="text" id="fullname" placeholder="John Doe">
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label>Username</label>
+    <div class="input-box">
+      <input type="text" id="username" placeholder="Enter username" required>
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label>Password</label>
+    <div class="input-box">
+      <input type="password" id="password" placeholder="••••••••" required>
+    </div>
+  </div>
+
+  <div class="input-group" id="confirmField" style="display:none;">
+    <label>Confirm Password</label>
+    <div class="input-box">
+      <input type="password" id="confirmPassword" placeholder="••••••••">
+    </div>
+  </div>
+
+  <div id="forgot" style="text-align:right; margin-bottom:15px;">
+    <a href="#" style="font-size:14px; color:#ef4444; text-decoration:none;">
+      Forgot Password?
+    </a>
+  </div>
+
+ <button class="auth-btn" type="submit" id="authBtn">
+  Login
+</button>
+
+ <div class="terms">
+  <label class="terms-label">
+    <input type="checkbox" id="termsCheck">
+    I agree to the
+    <span id="openTerms" class="terms-link">Terms & Agreements</span>
+  </label>
+</div>
+</form>
+
+  <div class="auth-toggle">
+  <p id="toggleText">
+    Don't have an account?
+    <span onclick="toggleAuth()" id="toggleAction">Sign Up</span>
+  </p>
+</div>
+
+    <div style="margin-top:25px; border-top:1px solid #eee; padding-top:20px;">
+      <p style="text-align:center; font-size:13px; color:#999;">Or continue with</p>
+
+      <div class="social-grid">
+        <button class="social-btn">Google</button>
+        <button class="social-btn">Facebook</button>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+  </div>
+
+  <p id="loginStatus"></p>
+
+<div id="accountGrid"></div>
+
+<div id="currentSession" hidden></div>
+
+
+</main>
+
+<div id="termsOverlay" class="terms-overlay"></div>
+
+<div id="termsModal" class="terms-modal">
+  <div class="terms-header">
+    <h2>Terms & Agreements</h2>
+    <button id="closeTerms" class="terms-close">✕</button>
+  </div>
+
+  <div class="terms-content">
+    <h3>1. Account Usage</h3>
+    <p>You agree to use Courtside Hoops responsibly and not attempt unauthorized access.</p>
+
+    <h3>2. Data & Sessions</h3>
+    <p>We store session data locally for authentication purposes only.</p>
+
+    <h3>3. Purchases</h3>
+    <p>All transactions are final unless otherwise stated.</p>
+
+    <h3>4. User Responsibility</h3>
+    <p>You are responsible for keeping your account credentials secure.</p>
+
+    <h3>5. Changes</h3>
+    <p>We may update these terms at any time without prior notice.</p>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const checkbox = document.getElementById("termsCheck");
+  const btn = document.getElementById("authBtn");
+
+  // initial state
+  btn.disabled = true;
+  btn.style.opacity = "0.5";
+  btn.style.cursor = "not-allowed";
+
+  function updateState() {
+    const allowed = checkbox.checked;
+
+    btn.disabled = !allowed;
+    btn.style.opacity = allowed ? "1" : "0.5";
+    btn.style.cursor = allowed ? "pointer" : "not-allowed";
+  }
+
+  checkbox.addEventListener("change", updateState);
+
+  btn.addEventListener("click", () => {
+    if (!checkbox.checked) {
+      alert("You must agree to the Terms & Agreements first.");
+      return;
+    }
+    
+    console.log("Login allowed ✔");
+  });
+
+  updateState();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const openBtn = document.getElementById("openTerms");
+  const closeBtn = document.getElementById("closeTerms");
+  const modal = document.getElementById("termsModal");
+  const overlay = document.getElementById("termsOverlay");
+
+  function openModal() {
+    modal.classList.add("active");
+    overlay.classList.add("active");
+  }
+
+  function closeModal() {
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+
+  openBtn.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+});
+</script>
+
+
+<script src="../CourtsideHoops/js/auth.js"></script>
+<script src="../CourtsideHoops/js/script.js"></script>
+
+</body>
+</html>
